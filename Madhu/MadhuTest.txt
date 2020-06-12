@@ -1,0 +1,23 @@
+1. ansible localhost -m group -a"name=deploy state=present"
+
+2. ansible localhost -m user -a"name=deploy-user shell=/bin/bash groups=deploy state=present"
+
+3. ansible localhost -m service -a"name=httpd"
+
+4. ansible localhost -m group -a"name=httpd state=present"
+
+5. ansible localhost -m file -a"path=/var/www/html/index.html state=directory mode=0755"
+
+6. ansible localhost -m copy -a"src=second.html dest=/var/www/html"
+
+7. sudo yum install wget -y
+sudo yum install git -y
+
+8. ansible localhost -m git -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=/root/repo-temp"
+
+9. ansible localhost -a "reboot"
+
+10 . ansible localhost -m file -a"path=/opt/devopsschool.txt state=touch"
+
+ansible localhost -m file -a"path=/opt/devopsschool.txt state=absent"
+
