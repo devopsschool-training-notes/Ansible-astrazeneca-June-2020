@@ -1,0 +1,31 @@
+Program 1 – Write a Ansible Adhoc Commands to create a group called “deploy
+ansible localhost -m group -a "name=tamgp state=present"
+
+Program 2 – Write a Ansible Adhoc Commands to create a user called “deploy-user” which is part of group called “deploy” and with /bin/bash shell.
+ansible localhost -m user -a "name=tamil group=tamgp createhome=yes" -b
+
+Program 3 – Write a Ansible Adhoc commands install package named “httpd” in RHEL/centos.
+ansible localhost -m yum -a"name=httpd state=present"
+
+Program 4 – Write a Ansible Adhoc commands to start and enable the service named “httpd”
+ansible localhost -m service -a"name=httpd state=started"
+
+Program 5 – Write a Ansible commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+ansible localhost -m copy -a"src=index.html dest=/var/www/html"
+
+Program 6 – Write a Ansible commands to copy a file called “second.html” in /var/www/html/second.html with some dummy html contents.
+ansible localhost -m copy -a"src=index.html dest=/var/www/html/second.html"
+
+Program 7 – Write a Ansible commands to install a package called “git”, “wget”.
+ansible localhost -m yum -a"name=wget state=present"
+ansible localhost -m yum -a"name=git state=present"
+
+Program 8 – Write a Ansible Adhoc commands to clone git repo. https://github.com/scmgalaxy/ansible-role-template.
+ansible localhost -m git -a "repo=https://github.com/scmgalaxy/ansible-role-template dest=/root/ansible-role-template"
+
+Program 9 – Write a Ansible commands to reboot a self machine.
+ansible localhost -a reboot
+
+Program 10 – Write a Ansible commands to touch a file called “devopsschool.txt” in /opt/ and delete after using ansible adhoc command.
+ansible localhost -m file -a"path=/opt/devopsschool.txt owner=deploy-user group=deploy state=touch"
+ansible localhost -m file -a"path=/opt/devopsschool.txt state=absent"
