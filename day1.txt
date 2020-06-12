@@ -347,4 +347,36 @@ ansible all -i 13.232.125.254,13.233.229.147, -m service -a"name=httpd state=sta
 
 
 
+Madhuvanthiy Chandar	52.66.201.162
+Tamilselvan Rajapandian	13.127.10.80
+singaravelan senthilkarasu	15.206.146.71
+Babu Selvam	13.127.240.68
+Kannan Jayakumar	35.154.237.183
+Dhyaneswaran K J	13.126.247.236
+Rajsh Selvaraj	13.235.242.143
+Nagesh kumar	13.232.189.222
+Guru Pandian	13.127.230.47
+Venkatesh Damodharan	13.126.90.245
+R Mathagi Arun	13.233.237.127
+Balamurugan	13.233.195.221
+Balaji T R	13.233.229.147
+mohit	13.127.61.86
+Sivashankar Murugan	13.127.66.199
+Surendhiran	3.6.87.133
+Suresh Anandan	13.232.181.148
+Lakshminarayanan	13.127.225.87
+James	35.154.27.171
+Babu Srinivasan	15.206.79.254
+
+User name - ec2-user
+Key - https://www.devopsschool.com/notes/docker/2019/
+file - 
+rajesh-mumbai.ppk for putty
+rajesh-mumbai.pem for ssh
+
+Lab - As mentioned Above.
+Assignment - https://www.devopsschool.com/blog/ansible-adhoc-commands-lab-excercise-part-1/
+
+
+
 
