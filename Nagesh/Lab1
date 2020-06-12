@@ -1,0 +1,10 @@
+ansible localhost -m group -a"name=deploy state=present"
+ansible localhost -m user -a"name=deploy-user groups=deploy"
+ansible localhost -m user -a"name=deploy-user shell:/bin/bash"
+ansible localhost -m file -a"path=/var/www/html/index.html state=touch"
+ansible localhost -m copy -a"src=second.html dest=/var/www/html"
+ansible localhost -m yum -a"name=git,wget state=present"
+ansible localhost -m git -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=/root/ansible-role-template"
+ansible localhost -m reboot 
+ansible localhost -m file -a"path=/opt/devopsschool.txt state=touch" 
+ansible localhost -m file -a"path=/opt/devopsschool.txt state=absent"
