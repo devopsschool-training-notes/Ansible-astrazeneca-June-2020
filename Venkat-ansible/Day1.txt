@@ -1,0 +1,44 @@
+1. [root@ip-172-31-17-91 ~]# ansible localhost -m group -a"name=deploy state=present"
+
+[root@ip-172-31-17-91 ~]#  more /etc/group | grep deploy
+
+2. [root@ip-172-31-17-91 ~]# ansible localhost -m user -a"name=deploy-user shell=/bin/bash groups=deploy state=present"
+
+3. ansible localhost -m yum -a"name=httpd state=present"
+
+	ansible localhost -m copy -a"src=index.html dest=/var/www/html"
+
+4 ansible localhost -m service -a"name=httpd state=started" 
+
+
+5. 
+ansible localhost -m file -a"path=/var/www/html/index.html state=touch mode=u+rw,g-wx,o-rwx"
+
+	
+
+6. [root@ip-172-31-17-91 ~]# ansible localhost -m copy  -a"src=second.html dest=/var/www/html"
+
+
+
+7. ansible localhost -m yum -a"name=wget state=present"
+
+[root@ip-172-31-17-91 ~]# ansible localhost -m yum -a"name=wget state=present"
+
+
+[root@ip-172-31-17-91 ~]# ansible localhost -m yum -a"name=git state=present"
+
+
+which git
+
+
+8. 	[root@ip-172-31-17-91 ~]# ansible localhost -m git -a"repo=https://github.com/scmgalaxy/ansible-role-template  dest=venkat clone=yes"
+
+
+
+9. ansible localhost -m reboot -a"name=Unconditionally reboot the machine with all defaults reboot="
+
+10. 
+[root@ip-172-31-17-91 ~]# ansible localhost -m file -a"path=/opt/devopsschool.txt state=touch mode=u+rw,g-wx,o-rwx"
+
+
+
