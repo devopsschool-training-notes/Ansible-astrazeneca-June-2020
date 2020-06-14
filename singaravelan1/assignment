@@ -22,3 +22,7 @@ ansible all -i 15.206.146.71, -m git -a "clone=yes dest=/tmp/ansible-role-templa
 
 Program 9 – Write a Ansible commands to reboot a self machine.
 ansible all -i 15.206.146.71, -m reboot -a"msg=planned reboot the machine with all defaults"
+
+Program 10 – Write a Ansible commands to touch a file called "devopsschool.txt" in /opt/ and delete after using ansible adhoc command.
+ansible all -i 15.206.146.71, -m file -a"path=/opt/devopsschool.txt owner=deploy-user group=deploy state=touch" -u ec2-user --key-file=remote.pem
+ansible all -i 15.206.146.71, -m file -a"path=/opt/devopsschool.txt state=absent" -u ec2-user --key-file=remote.pem
