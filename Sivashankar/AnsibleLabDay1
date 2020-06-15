@@ -1,1 +1,199 @@
 
+
+1)Program 1 – Write a Ansible Adhoc Commands to create a group called “deploy
+
+ansible localhost -m group -a"name=deploy state=present"
+
+}
+[root@ip-172-31-26-70 ~]# ansible localhost -m group -a"name=deploy state=present"
+localhost | CHANGED => {
+    "changed": true,
+    "gid": 1001,
+    "name": "deploy",
+    "state": "present",
+    "system": false
+}
+[root@ip-172-31-26-70 ~]# more /etc/group | grep deploy
+deploy:x:1001:
+--------------------------------------------------------
+2)Program 2 – Write a Ansible Adhoc Commands to create a user called “deploy-user” which is part of group called “deploy” and with /bin/bash shell.
+   
+ansible localhost -m user -a"name=deploy-user shell=/bin/bash groups=deploy"
+
+[root@ip-172-31-26-70 ~]# name=deploy-user shell=/bin/bash groups=deploy"
+localhost | CHANGED => {
+    "changed": true,
+    "comment": "",
+    "create_home": true,
+    "group": 1002,
+    "groups": "deploy",
+    "home": "/home/deploy-user",
+    "name": "deploy-user",
+    "shell": "/bin/bash",
+    "state": "present",
+    "system": false,
+    "uid": 1001
+}
+[root@ip-172-31-26-70 ~]# more /etc/passwd | grep deploy-user
+deploy-user:x:1001:1002::/home/deploy-user:/bin/bash
+--------------------------------------------------------------------------------
+
+3)Program 3 – Write a Ansible Adhoc commands install package named “httpd” in RHEL/centos.
+ansible localhost -m yum -a"name=httpd state=present"
+
+[root@ip-172-31-26-70 ~]# ansible localhost -m yum -a"name=httpd state=present"
+localhost | SUCCESS => {
+    "ansible_facts": {
+        "pkg_mgr": "yum"
+    },
+    "changed": false,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "httpd-2.4.6-93.el7.x86_64 providing httpd is already installed"
+    ]
+}
+[root@ip-172-31-26-70 ~]# which httpd
+/sbin/httpd
+
+-------------------------------------------------------------------------------------
+
+4)Program 4 – Write a Ansible Adhoc commands to start and enable the service named “httpd”
+[root@ip-172-31-26-70 ~]# ansible localhost -m service -a"name=httpd state=started"
+localhost | SUCCESS => {
+    "changed": false,
+    "name": "httpd",
+    "state": "started",
+    
+    }
+}
+[root@ip-172-31-26-70 ~]# ps -eaf | grep httpd
+root      3953     1  0 11:07 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    3954  3953  0 11:07 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    3955  3953  0 11:07 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    3956  3953  0 11:07 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    3957  3953  0 11:07 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    3958  3953  0 11:07 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+apache    3965  3953  0 11:08 ?        00:00:00 /usr/sbin/httpd -DFOREGROUND
+
+-----------------------------------------------------------------------------
+
+5)Program 5 – Write a Ansible commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+[root@ip-172-31-26-70 html]# ansible localhost -m file -a"path=/var/www/html/index.html state=touch"
+localhost | CHANGED => {
+    "changed": true,
+    "dest": "/var/www/html/index.html",
+    "gid": 0,
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "secontext": "unconfined_u:object_r:httpd_sys_content_t:s0",
+    "size": 0,
+    "state": "file",
+    "uid": 0
+-------------------------------------------------------------------------------
+6)Program 6 – Write a Ansible commands to copy a file called “second.html” in /var/www/html/second.html with some dummy html contents.
+
+[root@ip-172-31-26-70 www]# ansible localhost -m copy -a"src=second.html dest=/var/www/html"
+localhost | CHANGED => {
+    "changed": true,
+    "checksum": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "dest": "/var/www/html/second.html",
+    "gid": 0,
+    "group": "root",
+    "md5sum": "d41d8cd98f00b204e9800998ecf8427e",
+    "mode": "0644",
+    "owner": "root",
+    "secontext": "system_u:object_r:httpd_sys_content_t:s0",
+    "size": 0,
+    "src": "/root/.ansible/tmp/ansible-tmp-1591961551.36-4308-154080641876448/source",
+    "state": "file",
+    "uid": 0
+}
+------------------------------------------------------------------------------------
+7)Program 7 – Write a Ansible commands to install a package called “git”, “wget”.
+
+[root@ip-172-31-26-70 html]# ansible localhost -m yum -a"name=git,wget state=present"
+localhost | CHANGED => {
+    "ansible_facts": {
+        "pkg_mgr": "yum"
+    },
+    "changed": true,
+    "changes": {
+        "installed": [
+            "git"
+        ]
+    },
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "wget-1.14-18.el7_6.1.x86_64 providing wget is already installed",
+        "Loaded plugins: amazon-id, search-disabled-repos\nResolving Dependencies\n--> Running 
+}
+[root@ip-172-31-26-70 html]# which git
+/bin/git
+[root@ip-172-31-26-70 html]# which wget
+/bin/wget
+
+-------------------------------------------------------------------------------------------------
+8)Program 8 – Write a Ansible Adhoc commands to clone git repo. https://github.com/scmgalaxy/ansible-role-template.
+
+[root@ip-172-31-26-70 html]# ansible localhost -m git  -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=/var/clone/git clone=yes"
+localhost | CHANGED => {
+    "after": "d3eefe03c1bb6c9b0e1574347523174a26d015ff",
+    "before": null,
+    "changed": true
+}
+[root@ip-172-31-26-70 html]# cd /var/clone/git
+[root@ip-172-31-26-70 git]# ls
+bennojoy.mysql  inventory  node.pem  rajesh.role1  README.md  site.retry  site.yaml
+---------------------------------------------------------------------------------------
+9)Program 9 – Write a Ansible commands to reboot a self machine.
+
+[root@ip-172-31-26-70 ~]# ansible all -i 13.127.66.199, -m reboot -a"reboot_timeout=10" -u ec2-user --key-file=remote.pem -b
+
+
+
+---------------------------------------------------------------------------------------
+10)Program 10 – Write a Ansible commands to touch a file called “devopsschool.txt” in /opt/ and delete after using ansible adhoc command.
+[root@ip-172-31-26-70 git]# ansible localhost -m file -a"path=/opt/devopsschool.txt state=touch"
+localhost | CHANGED => {
+    "changed": true,
+    "dest": "/opt/devopsschool.txt",
+    "gid": 0,
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "secontext": "unconfined_u:object_r:usr_t:s0",
+    "size": 0,
+    "state": "file",
+    "uid": 0
+}
+[root@ip-172-31-26-70 git]# cd /opt
+[root@ip-172-31-26-70 opt]# ls
+devopsschool.txt
+
+[root@ip-172-31-26-70 opt]#
+[root@ip-172-31-26-70 opt]# ansible localhost -m file -a"path=/opt/devopsschool.txt state=absent"
+localhost | CHANGED => {
+    "changed": true,
+    "path": "/opt/devopsschool.txt",
+    "state": "absent"
+}
+[root@ip-172-31-26-70 opt]# ls -ltr
+total 0
+[root@ip-172-31-26-70 opt]#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
