@@ -1,0 +1,50 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Create Deploy group
+    group:
+      name: deploy
+      state: present
+  - name: Create deploy-user user id
+    user:
+      name: deploy-user
+      shell: /bin/bash
+      group: deploy
+  - name: Install httpd package
+    yum:
+      name: httpd
+      state: latest
+  - name: Start and enable the service
+    service:
+      name: httpd
+      status: started
+      enabled: yes
+  - name: Copy index.html
+    copy:
+      src: /root/kannan/index.html
+      dest: /var/www/html/
+      owner: deploy-user
+      group: deploy
+
+  - name: ReStart the httpd service
+    service:
+      name: httpd
+      status: restarted
+
+#- name: Reboot the server
+#  reboot:
+#    reboot_timeout: 3600
+
+  - name: Install git package
+    yum:
+      name: git
+      state: latest
+  - name: Install wget package
+    yum:
+      name: wget
+      state: latest
+  - name: Clone GIT
+    git:
+      repo: https://github.com/scmgalaxy/ansible-role-template
+      dest: /root
+
