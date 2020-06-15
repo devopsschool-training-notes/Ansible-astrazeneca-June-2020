@@ -1,0 +1,66 @@
+- name: user creation
+  hosts: web
+  tasks:
+   - name: creation
+     user:
+      name: deploy-user
+      state: present
+      group: deploy
+
+- name: group creation
+  hosts: web
+  tasks:
+   - name: creation
+     group:
+      name: deploy
+      state: present
+
+- name: installation httpd
+  hosts: web
+  tasks:
+   - name: install
+     yum:
+      name: httpd
+      state: present
+   - name: service start and enabled
+     service:
+      name: httpd
+      state: restarted
+      enabled: yes
+   - name: Create the Index.html file
+     copy:
+      content: "Hello {{ ansible_hostname }}"
+      dest: /var/www/html/index.html
+      mode: 0644
+      force: yes
+
+- name: git & wget
+  hosts: web
+  tasks:
+   - name: install git
+     yum:
+      name: git
+      state: installed
+   - name: install wget
+     yum:
+      name: wget
+      state: latest
+
+- name: CLone
+  hosts: web
+  tasks:
+   - name: Clone GIT
+     git:
+      repo: https://github.com/scmgalaxy/ansible-role-template
+      dest: /root
+
+- name: reboot localhost
+  hosts: web
+  tasks:
+   - name: Restart Server
+     shell: sleep 2 && shutdown -r now
+     async: 1
+     poll: 0
+     become: yes
+     become_method: sudo
+     ignore_errors: true
