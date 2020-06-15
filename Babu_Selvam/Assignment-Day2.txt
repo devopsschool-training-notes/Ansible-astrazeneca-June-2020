@@ -16,3 +16,50 @@ he ungrouped group contains all hosts that don’t have another group aside from
 
 ===============================================================================================
 Assignment 4
+
+
+*************************************************************************
+ASSIGNMENT SET 2
+*************************************************************************
+
+---
+- name: Complete playbook
+  hosts: Servers
+  tasks:
+  - name: Create group "Deploy"
+    group:
+      name: deploy
+      state: present
+  - name: Create group "deploy-user"
+    user:
+      name: deploy-user
+      group: deploy
+      shell: /bin/bash
+  - name: install "httpd"
+    yum:
+      name: httpd
+      state: present
+  - name: Start "httpd"
+    service:
+      name: httpd
+      state: started
+  - name: Copy index.html
+    copy:
+      src: index.html
+      dest: /var/www/html
+  - name: Reboot self machine
+    reboot:
+      reboot_timeout: 60
+  - name: install "wget"
+    yum:
+      name: wget
+      state: present
+  - name: install "git"
+    yum:
+      name: git
+      state: present
+  - name: Clone Repo
+    git:
+      clone: yes
+      repo: https://github.com/scmgalaxy/ansible-role-template
+...
