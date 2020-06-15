@@ -1,0 +1,5 @@
+- name: Create a user
+  hosts: web
+  tasks:
+  - name: user creation
+    user: name=deploy-user groups=deploy

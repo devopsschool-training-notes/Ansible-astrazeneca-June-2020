@@ -5,6 +5,9 @@
 [app]
 52.66.255.58 ansible_user=ec2-user
 
+[gof]
+web
+app
 
 [gog:children]
 web

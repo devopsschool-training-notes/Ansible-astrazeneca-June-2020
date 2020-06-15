@@ -1,0 +1,8 @@
+---
+- name: This play to create httpd package
+  hosts: web	
+  tasks: 
+  - name: Create a httpd package
+    yum: name=httpd state=present
+...	
+

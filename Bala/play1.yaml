@@ -1,0 +1,2 @@
+- name: create a group
+    yum: name=deploy state=present

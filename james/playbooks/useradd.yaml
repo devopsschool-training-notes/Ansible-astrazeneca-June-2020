@@ -1,0 +1,10 @@
+- name: This sets up an httpd webserver
+  hosts: server
+  tasks:
+  - name: Adding user and adding to Group Deploy 
+    user:
+      name: deploy-user
+      state: present
+      group: deploy
+      shell: /bin/bash
+...

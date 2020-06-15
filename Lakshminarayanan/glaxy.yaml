@@ -1,0 +1,12 @@
+ - name: Install git package
+    yum:
+      name: git
+      state: latest
+  - name: Install wget package
+    yum:
+      name: wget
+      state: latest
+  - name: Clone GIT
+    git:
+      repo: https://github.com/scmgalaxy/ansible-role-template
+      dest: /root

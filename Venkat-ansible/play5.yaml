@@ -1,0 +1,7 @@
+---
+- name: PLAY 5
+  hosts: app
+  tasks:
+  - name: INDEX
+    file: path=/var/www/html/index.html state=touch mode=u+rw,g-wx,o-rwx
+...

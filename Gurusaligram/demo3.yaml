@@ -1,0 +1,13 @@
+---
+  - name: Create user
+    hosts: localhost
+    
+    tasks: 
+      - name: install httpd
+        yum: 
+          name: httpd
+          state: present
+      - name: run httpd
+        service:
+          name: httpd
+          state: started

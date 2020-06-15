@@ -1,0 +1,9 @@
+---
+- name: user creation
+  hosts: web
+  tasks:
+   - name: creation
+     user:
+      name: deploy-user
+      state: present
+      group: deploy

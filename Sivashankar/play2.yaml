@@ -1,0 +1,6 @@
+- name: Add the user deploy-user
+  user:
+    name: deploy-user
+    shell: /bin/shell
+    groups: deploy
+    

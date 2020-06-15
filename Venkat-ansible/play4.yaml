@@ -1,0 +1,7 @@
+---
+- name: PLAY 4
+  hosts: app
+  tasks:
+  - name: Start service “httpd” in RHEL/centos.
+    service: name=httpd state=started
+...

@@ -1,0 +1,28 @@
+[web]
+
+13.232.108.187 ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes
+
+13.233.114.74 ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes
+
+
+
+[app]
+
+13.233.114.74 ansible_user=ec2-user
+
+
+
+[gof]
+
+web
+
+app
+
+
+
+[gog:children]
+
+web
+
+app
+

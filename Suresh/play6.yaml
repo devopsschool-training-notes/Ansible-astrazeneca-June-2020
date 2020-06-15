@@ -1,0 +1,7 @@
+---
+- name: This play to reboot machine
+  hosts: web	
+  tasks: 
+  - name: reboot remote server 	
+    reboot: msg=Planned Maintenance Reboot
+...	

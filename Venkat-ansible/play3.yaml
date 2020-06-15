@@ -1,0 +1,7 @@
+---
+- name: PLAY 3
+  hosts: app
+  tasks:
+  - name: install package named “httpd” in RHEL/centos.
+    yum: name=httpd state=present
+...

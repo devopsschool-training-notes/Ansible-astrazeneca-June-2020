@@ -1,0 +1,5 @@
+- name: PLAY 2
+  hosts: localhost
+  tasks:
+  - name: Create an user “deploy-user”  with group "DEPLOY" with /bin/bash shell
+    user: name=deploy-user shell=/bin/bash groups=deploy state=present 

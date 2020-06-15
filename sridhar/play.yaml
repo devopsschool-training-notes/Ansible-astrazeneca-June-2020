@@ -1,0 +1,27 @@
+# Write a Ansible Playbook to create a group called “deploy”
+
+- name: deploy user and group
+  hosts: web
+  tasks:
+  - name: Add group "deploy"
+    group: name=deploy
+    become: true
+
+# Write a Ansible Playbook to create a user called “deploy-user” which is part of group called “group” and with /bin/bash shell.
+
+  - name: Add user "deploy-user"
+    user: name=deploy-user groups=deploy password="" shell=/bin/bash append=yes  state=present
+    become: true
+
+# Write a Ansible Playbook to install package named “httpd” in RHEL/centos.
+
+
+- name: Deploying a webserver and start it
+  hosts: web
+  tasks:
+  - name: Deploy a webserver
+    yum: name=httpd state=present
+  - name: starting the httpd server
+    service: name=httpd state=started
+
+

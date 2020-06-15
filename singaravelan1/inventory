@@ -1,0 +1,31 @@
+all:
+  children:
+    db:
+      hosts:
+        15.206.167.128:
+          ansible_become: 'yes'
+          ansible_become_pass: password
+          ansible_connection: paramiko
+          ansible_ssh_pass: abc-123
+          ansible_user: ec2-user
+        db2:
+          ansible_host: 15.206.167.128
+        db3.ddd.com:
+          ansible_port: 23
+    gog:
+      children:
+        app:
+          hosts:
+            foo.example.com:
+              ansible_host: 15.206.167.128
+              ansible_connection: ssh
+              ansible_user: ec2-user
+              ansible_ssh_pass: abc-123
+        web:
+          hosts:
+            bar.example.com:  
+              ansible_host: 15.206.167.128
+              ansible_connection: ssh
+              ansible_user: ec2-user
+              ansible_ssh_pass: abc-123
+    ungrouped: {}

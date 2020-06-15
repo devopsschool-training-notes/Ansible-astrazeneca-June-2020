@@ -1,0 +1,11 @@
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: copy a file
+    copy: dest=/etc/yum.repos.d/ src="mysql-community.repo"
+  - name: Install the httpd apps
+    yum: name=mysql-community-server state=present
+  - name: start the httpd service
+    service: name=mysqld state=started
+...

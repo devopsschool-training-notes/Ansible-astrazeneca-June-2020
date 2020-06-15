@@ -1,0 +1,4 @@
+- name: Create Group  Deploy 
+  group:
+    name: deploy
+    state: present

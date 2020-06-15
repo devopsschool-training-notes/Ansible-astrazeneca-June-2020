@@ -1,0 +1,10 @@
+mail.example.com
+ 
+&#91;webservers]
+foo.example.com
+bar.example.com
+ 
+&#91;dbservers]
+one.example.com
+two.example.com
+three.example.com

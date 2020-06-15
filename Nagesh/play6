@@ -1,0 +1,5 @@
+- name: Unconditionally reboot the machine with all defaults
+  hosts: web 
+  tasks:
+  - name: Reboot the machine
+    reboot:

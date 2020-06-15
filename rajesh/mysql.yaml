@@ -1,0 +1,14 @@
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Download mysql-community-release-el7-5.noarch.rpm
+    get_url:
+      url: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+      dest: /tmp
+      mode: '0755'
+  - name: Run a command that uses non-posix shell-isms 
+    shell: rpm -ivh /tmp/mysql-community-release-el7-5.noarch.rpm
+    args:
+      executable: /bin/bash
+...

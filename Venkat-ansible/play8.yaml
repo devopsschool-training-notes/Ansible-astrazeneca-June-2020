@@ -1,0 +1,7 @@
+---
+- name: PLAY 8
+  hosts: app
+  tasks:
+  - name: CLONE GIT
+    git: repo=https://github.com/scmgalaxy/ansible-role-template  dest=venkat clone=yes
+...

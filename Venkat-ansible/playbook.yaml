@@ -1,0 +1,52 @@
+---
+- name: PLAY 1
+  hosts: app
+  tasks:
+  - name: Create an Group "DEPLOY"
+    group: name=deploy state=present
+    
+- name: PLAY 2
+  hosts: app
+  tasks:
+  - name: Create an user “deploy-user”  with group "DEPLOY" with /bin/bash shell
+    user: name=deploy-user shell=/bin/bash groups=deploy state=present
+
+- name: PLAY 3
+  hosts: app
+  tasks:
+  - name: install package named “httpd” in RHEL/centos.
+    yum: name=httpd state=present
+
+- name: PLAY 4
+  hosts: app
+  tasks:
+  - name: Start service “httpd” in RHEL/centos.
+    service: name=httpd state=started
+
+- name: PLAY 5
+  hosts: app
+  tasks:
+  - name: INDEX
+    file: path=/var/www/html/index.html state=touch mode=u+rw,g-wx,o-rwx
+
+- name: PLAY 6
+  hosts: app
+  tasks:
+  - name: Reboot
+    reboot: name="Unconditionally reboot="
+
+- name: PLAY 7
+  hosts: app
+  tasks:
+  - name: install package named “wget" in RHEL/centos.
+    yum: name=wget state=present
+  - name: install package named “GIT" in RHEL/centos.
+    yum: name=git state=present
+
+- name: PLAY 8
+  hosts: app
+  tasks:
+  - name: CLONE GIT
+    git: repo=https://github.com/scmgalaxy/ansible-role-template  dest=venkat clone=yes
+...
+

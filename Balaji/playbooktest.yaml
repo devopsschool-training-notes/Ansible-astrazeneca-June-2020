@@ -1,0 +1,6 @@
+---
+- name: create group name
+  group:
+    name: delpoy
+    state: present
+--- 	

@@ -1,0 +1,19 @@
+---
+- name: installation httpd
+  hosts: web
+  tasks:
+   - name: install
+     yum:
+      name: httpd
+      state: present
+   - name: service start and enabled  
+     service:
+      name: httpd
+      state: restarted
+      enabled: yes
+   - name: Create the Index.html file
+     copy:
+      content: "Hello {{ ansible_hostname }}"
+      dest: /var/www/html/index.html
+      mode: 0644
+      force: yes

@@ -1,0 +1,7 @@
+- name: deploy package httpd and start it
+  hosts: localhost
+  tasks:
+  - name: Deploying a webserver
+    yum: name=httpd state=present
+  - name: starting the httpd server
+    service: name=httpd state=started

@@ -1,0 +1,7 @@
+---
+- name: PLAY 6
+  hosts: app
+  tasks:
+  - name: Reboot
+    reboot: name="Unconditionally reboot="
+...

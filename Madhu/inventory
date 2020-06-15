@@ -1,0 +1,6 @@
+[app]
+13.127.95.177
+[web]
+13.127.95.177 ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes ansible_become_pass=password
+[gog]
+web

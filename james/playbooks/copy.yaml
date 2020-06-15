@@ -1,0 +1,7 @@
+- name: This sets up an httpd webserver
+  hosts: server
+  tasks:
+  - name: Copy File
+    copy:
+       src: index.html
+       dest: /var/www/html/

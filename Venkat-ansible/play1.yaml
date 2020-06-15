@@ -1,0 +1,7 @@
+---
+- name: PLAY 1
+  hosts: app
+  tasks:
+  - name: Create an Group "DEPLOY"
+    group: name=deploy state=present
+...

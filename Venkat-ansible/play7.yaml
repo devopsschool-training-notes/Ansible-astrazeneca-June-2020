@@ -1,0 +1,9 @@
+---
+- name: PLAY 7
+  hosts: app
+  tasks:
+  - name: install package named “wget" in RHEL/centos.
+    yum: name=wget state=present
+  - name: install package named “GIT" in RHEL/centos.
+    yum: name=git state=present 
+...
