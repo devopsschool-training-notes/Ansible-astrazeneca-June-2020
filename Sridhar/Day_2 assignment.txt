@@ -1,0 +1,68 @@
+Assignment 1
+You have been given a RHEL 7.X instance for ARS where access is enabled with ec2-user and key. Password login is disabled. You need to enable a password login and use inventory with behavioural param of username and password to execute following.
+
+$ ansible gog -i inventory -m copy -a"src=index.html dest=/var/www/html"
+
+Workaround
+
+[root@ip-172-31-17-140 sridhar]# ansible gog -i inventory -m copy -a"src=index.html dest=/var/www/html"
+[WARNING]: Found both group and host with same name: web
+[WARNING]: Found both group and host with same name: app
+[WARNING]: Platform linux on host 13.127.241.215 is using the discovered Python
+interpreter at /usr/bin/python, but future installation of another Python interpreter
+could change this. See
+https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for
+more information.
+13.127.241.215 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "checksum": "2b4ae819ce4adc297aa9c3aee140cbacb52571b1",
+    "dest": "/var/www/html/index.html",
+    "gid": 0,
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "path": "/var/www/html/index.html",
+    "secontext": "system_u:object_r:httpd_sys_content_t:s0",
+    "size": 48,
+    "state": "file",
+    "uid": 0
+}
+
+
+
+
+Assignment 2
+Can you please convert this INI inventory format to yaml inventory format and use it
+
+mail.example.com
+
+&#91;webservers]
+foo.example.com
+bar.example.com
+
+&#91;dbservers]
+one.example.com
+two.example.com
+three.example.com
+
+Workaround
+
+ansible-inventory -i inventory -y --list > inventory.yaml
+
+all:
+  children:
+    ungrouped:
+      hosts:
+        '&': {}
+        bar.example.com: {}
+        foo.example.com: {}
+        mail.example.com: {}
+        one.example.com: {}
+        three.example.com: {}
+        two.example.com: {}
+~
+
+
