@@ -321,4 +321,144 @@ exec
 
 Assignment - 
 https://www.devopsschool.com/blog/ansible-playbook-lab-excercise-part-2/
+===================================================================================
+files
+templates
+Handlers
+---------------------------------------------------------------------------
+
+
+
+
+
+How to declare a variable playbook
+--------------------------------
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  vars:
+    myname: rajesh
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="index.html"
+  - debug:
+      msg: My Name is {{ myname }} 
+...
+
+templates
+=========================
+templates would help you to change intrro* vars dynamically.
+
+Python - Jinja2
+
+Step 1- Convert a template file info .j2
+Step 2 - Declare any var which you want to change during run time in .j2
+Step 3 - using Module called "template"
+
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  vars:
+    myname: rajesh
+    port: 81
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+  - name: start the httpd service
+    service: name=httpd state=stopped
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+  - debug:
+      msg: My Name is {{ myname }} 
+
+...
+=====================================
+How to deubg Ansible running?
+---------------------------------------------
+
+How to check syntax issues before rnning Ansible?
+ - --syntax-check
+ansible-playbook --syntax-check -i temp 2.yaml
+
+How to do Dry run?
+ansible-playbook --check -i temp 2.yaml
+
+Message Level
+	
+ 1086  ansible-playbook -i temp 2.yaml -v
+ 1087  clear
+ 1088  ansible-playbook -i temp 2.yaml -vv
+ 1089  ansible-playbook -i temp 2.yaml -vvv
+ 1090  clear
+ 1091  ansible-playbook -i temp 2.yaml -vvvv
+ 1092  clear
+ 1093  ansible-playbook -i temp 2.yaml -vvvvv
+ 1094  clear
+ 1095  ansible-playbook -i temp 2.yaml -vvvvvv
+
+
+==================HANDLERS==========================
+---
+- name: This sets up an httpd webserver
+  hosts: dev
+  vars:
+    myname: rajesh
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+  - debug:
+      msg: My Name is {{ myname }} 
+ 
+  handlers:
+  - name: THIS IS handlers - restart
+    service: name=httpd state=restarted
+
+
+
+
+
+...
+
+
+
+
 
