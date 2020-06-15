@@ -186,13 +186,139 @@ Sridhar Sekar	13.127.241.215
 	35.154.19.228
 
 
+Assignment
+https://www.devopsschool.com/blog/ansible-inventory-lab-excercise-part-1/
+=========================================================================
 
 
+ansible gog -i inventory -m yum -a"name=httpd state=present" 
+ansible gog -i inventory -m copy -a"src=index.html dest=/var/www/html"
+ansible gog -i inventory -m service -a"name=httpd state=started"
+
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="index.html"
+...
+
+ansible-playbook -i temp play.yaml
+==============================================
+Deploy a Application "Wordpress"
+-------------------------------------
+WEB - Apache
+APP - PHP
+DB - MySQL
+Software - Wordpress
+=============================
+Step 1- Install mysql
+Step 2- Start mysql 
+Step 3- Install XAMPP
+Step 4- Intall wordpress
+
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="index.html"
+...
+
+/etc/yum.repos.d/mysql-community.repo
+
+[mysql80-community]
+name=MySQL 8.0 Community Server
+baseurl=http://repo.mysql.com/yum/mysql-8.0-community/el/6/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql
 
 
+sudo yum install mysql-community-server
 
 
+sudo service mysqld start
+
+$ cd /opt
+> wget https://www.apachefriends.org/xampp-files/5.6.32/xampp-linux-x64-5.6.32-0-installer.run
+> chmod 755 xampp-linux-x64-5.6.32-0-installer.run
+> ./xampp-linux-x64-5.6.32-0-installer.run
+
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: copy a file
+    copy: dest=/etc/yum.repos.d/ src="mysql-community.repo"
+  - name: Install the httpd apps
+    yum: name=mysql-community-server state=present
+  - name: start the httpd service
+    service: name=mysqld state=started
+...
+
+wget - download a file. 
+	Which file? - 
+		rpm
+
+shell 
+Step 1 - Download a repo using wget (rpm)
+Step 2 - Install a repo
+Step 3 - instal mysql-community-server
+
+shell 
+
+Step 1 - Download a package using wget
+Step 2 - instal mysql-community-server rpm  SHELL 
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+yum update
+
+1
+2
+sudo yum install mysql-server
+sudo systemctl start mysqld
 
 
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Download mysql-community-release-el7-5.noarch.rpm
+    get_url:
+      url: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+      dest: /tmp
+      mode: '0755'
+  - name: Run a command that uses non-posix shell-isms 
+    shell: rpm -ivh /tmp/mysql-community-release-el7-5.noarch.rpm
+    args:
+      executable: /bin/bash
+  - name: Install the httpd apps
+    yum: update_cache=yes
+  - name: Install the httpd apps
+    yum: name=mysql-server state=present
+  - name: start the httpd service
+    service: name=mysqld state=started
+...
 
+shell
+command
+script
+exec
+===========================================
+
+Assignment - 
+https://www.devopsschool.com/blog/ansible-playbook-lab-excercise-part-2/
 
