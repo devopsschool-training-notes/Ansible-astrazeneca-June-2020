@@ -1,1 +1,24 @@
+---
+- name: Create group "Deploy"
+  hosts: web
+  tasks:
+  - name: Create group "Deploy"
+    group:
+      name: deploy
+      state: present
+...
+---
+- name: PLAY 2
+  hosts: web
+  tasks:
+  - name: Create an user “deploy-user”  with group "DEPLOY" with /bin/bash shell
+    user: name=deploy-user shell=/bin/bash groups=deploy state=present
+...
+---
+- name: PLAY 3
+  hosts: web
+  tasks:
+  - name: install package named “httpd” in RHEL/centos.
+    yum: name=httpd state=present
+...
 
