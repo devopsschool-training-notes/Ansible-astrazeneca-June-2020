@@ -1,6 +1,6 @@
 ---
   - name: Install a package
-    hosts: localhost
+    hosts: web
     
     tasks:
       - name: install git, wget

@@ -1,11 +1,9 @@
 ---
-  - name: Create user
+  - name: Cretae a group
     hosts: localhost
     
-    tasks:
-      - name: Create user
-        user:
-          name: deploy-user
+    tasks: 
+      - name: Group name
+        group: 
+          name: deploy
           state: present
-          group: deploy
-          shell: /bin/bash

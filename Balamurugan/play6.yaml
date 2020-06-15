@@ -1,0 +1,7 @@
+---
+- name: This play to create Reboot the host
+  hosts: web	
+  tasks: 
+  - name: Reboot the machine
+    reboot: reboot_timeout=10 
+...

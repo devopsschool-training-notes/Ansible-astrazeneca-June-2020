@@ -1,9 +1,0 @@
----
-  - name: Cretae a group
-    hosts: localhost
-    
-    tasks: 
-      - name: Group name
-        group: 
-          name: deploy
-          state: present

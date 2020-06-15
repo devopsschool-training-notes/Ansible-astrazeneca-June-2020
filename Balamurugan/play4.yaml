@@ -1,0 +1,7 @@
+---
+- name: This play to start httpd service
+  hosts: web	
+  tasks: 
+  - name: start httpd service
+    service: name=httpd state=started
+...

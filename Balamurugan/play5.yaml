@@ -1,0 +1,7 @@
+---
+- name: This play to create index.html
+  hosts: web	
+  tasks: 
+  - name: create index.html
+    file: name=index.html path=/var/www/html state=touch
+...
