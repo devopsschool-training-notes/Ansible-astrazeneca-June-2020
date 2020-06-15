@@ -1,0 +1,9 @@
+ansible localhost -m group -a"name=deploy state=present"
+ansible localhost -m user -a"name=deploy-user shell=/bin/bash group=deploy"
+ansible localhost -m yum -a"name=http state=present"
+ansible localhost -service -a"name=httpd enabled=yes state=started"
+ansible localhost -m copy -a"src=index.html dest=/var/www/html/second.html"
+ansible localhost -m package -a"name=git,wget state=present"
+ansible localhost -m reboot
+ansible locahost -m file -a"name=devopsschool.txt path /opt touch=present"
+ansible locahost -m file -a"name=devopsschool.txt path /opt touch=absent"
