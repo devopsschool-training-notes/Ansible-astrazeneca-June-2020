@@ -12,3 +12,7 @@ ansible-inventory -i inventory.ini -y --list > yaml-inventory.yaml
 
 Assignment 3
 
+he ungrouped group contains all hosts that don’t have another group aside from all. 
+
+===============================================================================================
+Assignment 4
