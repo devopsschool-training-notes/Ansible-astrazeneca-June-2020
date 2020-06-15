@@ -1,0 +1,13 @@
+---
+
+- name: create Group
+
+  hosts: web	
+
+  tasks:
+
+  - name: Create a group
+
+    group: name=deploy state=present
+
+...	

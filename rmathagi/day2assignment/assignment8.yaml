@@ -1,0 +1,6 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Clone git repo
+    git: repo=https://github.com/scmgalaxy/ansible-role-template dest=/root/ansible-role-template
+

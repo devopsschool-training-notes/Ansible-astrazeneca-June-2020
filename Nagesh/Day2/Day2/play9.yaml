@@ -1,0 +1,26 @@
+- name: Assignment 3
+  hosts: web
+  tasks:
+  - name: create a group called deploy
+    group: name=deploy state=present
+
+  - name: create a user called deploy-user
+    user: name=deploy-user groups=deploy
+
+  - name: Install httpd package
+    yum: name=httpd state=present
+
+  - name: Enable and start httpd package
+    service: name=httpd state=started enabled=yes
+
+  - name: Create index.html
+    file: path=/var/www/html/index.html state=touch
+
+  - name: Reboot the instance
+    reboot:
+
+  - name: Install wget and git package
+    yum: name=wget,git state=present
+
+  - name: Clone git repo
+    git: repo=https://github.com/scmgalaxy/ansible-role-template dest=/root/nagesh

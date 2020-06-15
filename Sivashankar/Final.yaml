@@ -1,0 +1,43 @@
+--- 
+- 
+  hosts: Web
+  tasks: 
+    - name: Add group deploy
+     group:
+       name: deploy
+       state: present
+- name: Add user "Deploy-user"
+     user:
+       name: Deploy-user
+       group: deploy
+
+ - name: Install httpd
+     yum:
+       name: httpd
+       state: present
+
+ - name: Install httpd
+     service:
+       name: httpd
+       state: started
+
+ - name: create a file index.html
+     file:
+       path: /var/www/html/index.html
+       state: touch
+    -
+      name: "Install Git"
+      yum:
+        name: git
+        state: present
+    -
+      name: "Install wget"
+      yum:
+        name: wget
+        state: present    git:
+        clone: yes
+        dest: /var/clone/git
+        repo: "https://github.com/scmgalaxy/ansible-role-template"
+      name: Clone
+
+

@@ -1,0 +1,6 @@
+- hosts: Web
+  tasks:
+   - name: Install httpd
+     service:
+       name: httpd
+       state: started

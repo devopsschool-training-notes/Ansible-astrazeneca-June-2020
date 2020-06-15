@@ -1,0 +1,9 @@
+---
+  - name: Install a package
+    hosts: localhost
+    
+    tasks:
+      - name: Git clone
+        git:
+          repo:https://github.com/scmgalaxy/ansible-role-template
+          clone: no

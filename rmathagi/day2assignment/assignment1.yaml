@@ -1,0 +1,6 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: create a group called deploy
+    group: name=deploy state=present
+

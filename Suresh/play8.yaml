@@ -1,0 +1,7 @@
+---
+- name: This play to create package called git & wget
+  hosts: web	
+  tasks: 
+  - name: Create clone git repo
+    git: repo=https://github.com/scmgalaxy/ansible-role-template clone=yes dest=/home/cloud-user/ansible-role-template
+...	

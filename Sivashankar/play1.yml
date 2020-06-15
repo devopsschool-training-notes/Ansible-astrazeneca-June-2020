@@ -1,4 +1,6 @@
-- name: Create Group  Deploy 
-  group:
-    name: deploy
-    state: present
+- hosts: Web
+  tasks:
+   - name: Add group deploy
+     group:
+       name: deploy
+       state: present

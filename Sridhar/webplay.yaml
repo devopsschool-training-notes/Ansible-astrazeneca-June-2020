@@ -1,20 +1,14 @@
----
-# Write a Ansible Playbook to create a group called “deploy”
-# Write a Ansible Playbook to create a user called “deploy-user” which is part of group called “group” and with /bin/bash shell.
 
 - name: Creating deploy user and group
   hosts: web
   tasks:
-  - name: Add a group "deploy"
+  - name: Add group "deploy"
     group: name=deploy
     become: true
 
-  - name: Add a user "deploy-user"
+  - name: Add user "deploy-user"
     user: name=deploy-user groups=deploy password="" shell=/bin/bash append=yes  state=present
     become: true
-
-# Write a Ansible Playbook to install package named “httpd” in RHEL/centos.
-# Write a Ansible Playbook to start and enable the service named “httpd”
 
 - name: Deploying a webserver and start it
   hosts: web
@@ -24,7 +18,7 @@
   - name: starting the httpd server
     service: name=httpd state=started
 
-# Write a Ansible Playbook to create a file called index.html in /var/www/html with some dummy html contents.
+
 
 - name: create an index.html for the webserver.
   hosts: web
@@ -40,10 +34,17 @@
       dest: /var/www/html/index.html
       block: |
         <html>
-        <h1> Welcome to AZ Ansible class-Velan </h1>
+        <h1> Welcome to HP Ansible class </h1>
         </html>
 
-# Write a Ansible Playbook to install a package called git, wget.
+
+- name: Rebooting the hosts
+  hosts: web
+  tasks:
+  - name: Rebooting now.
+    reboot:
+
+
 - name: Installing git and wget.
   hosts: web
   tasks:
@@ -52,18 +53,11 @@
     with_items:
      - wget
      - git
-# Write a Ansible Playbook to clone git repo. thttps://github.com/scmgalaxy/ansible-role-template
+
 - name: Cloning git repo https://github.com/scmgalaxy/ansible-role-template
   hosts: web
   tasks:
   - name: cloning....
     git: repo=https://github.com/scmgalaxy/ansible-role-template clone=yes dest=./ansible-role-template
 
-# Write a Ansible Playbook to reboot a self machine.
-- name: Rebooting the hosts
-  hosts: web
-  tasks:
-  - name: Rebooting now.
-    reboot:
 
-...

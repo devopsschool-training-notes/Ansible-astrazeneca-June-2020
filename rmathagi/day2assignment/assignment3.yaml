@@ -1,0 +1,5 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Install httpd package
+    yum: name=httpd state=present

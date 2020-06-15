@@ -1,0 +1,28 @@
+all:
+  children:
+    db:
+      hosts:
+        13.127.241.215:
+          ansible_become: 'yes'
+          ansible_become_pass: password
+          ansible_connection: paramiko
+          ansible_ssh_pass: password
+          ansible_ssh_private_key_file: remote.pem
+          ansible_user: ec2-user
+        db2:
+          ansible_host: 52.66.255.56
+        db3.ddd.com:
+          ansible_port: 23
+    gof:
+      hosts:
+        app: {}
+        web: {}
+    gog:
+      children:
+        app:
+          hosts:
+            13.127.241.215: {}
+        web:
+          hosts:
+            13.127.241.215: {}
+    ungrouped: {}

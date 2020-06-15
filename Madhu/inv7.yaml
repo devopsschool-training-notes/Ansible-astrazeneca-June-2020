@@ -1,0 +1,7 @@
+- name: Installing git and wget.
+  hosts: localhost
+  tasks:
+  - name: Install
+    yum: name=wget state=present
+  - name: Install
+    yum: name=git state=present

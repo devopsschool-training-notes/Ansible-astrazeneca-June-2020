@@ -1,0 +1,15 @@
+--- 
+- 
+  hosts: Web
+  tasks: 
+    - 
+      name: "Install Git"
+      yum: 
+        name: git
+        state: present
+    - 
+      name: "Install wget"
+      yum: 
+        name: wget
+        state: present
+

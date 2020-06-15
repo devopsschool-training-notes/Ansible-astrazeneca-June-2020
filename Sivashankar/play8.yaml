@@ -1,0 +1,10 @@
+--- 
+- 
+  hosts: Web
+  tasks: 
+    - 
+      git: 
+        clone: yes  
+        dest: /var/clone/git
+        repo: "https://github.com/scmgalaxy/ansible-role-template"
+      name: Clone

@@ -1,0 +1,9 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Install wget package
+    yum: name=wget state=present
+
+  - name: Install git package
+    yum: name=git state=present
+

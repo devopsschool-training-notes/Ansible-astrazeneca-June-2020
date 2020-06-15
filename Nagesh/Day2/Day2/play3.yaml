@@ -1,0 +1,5 @@
+- name: Install httpd service
+  hosts: web
+  tasks:
+  - name: Install httpd
+    yum: name=httpd state=present

@@ -1,6 +1,6 @@
-- name: Add the user deploy-user
-  user:
-    name: deploy-user
-    shell: /bin/shell
-    groups: deploy
-    
+- hosts: Web
+  tasks:
+   - name: Add user "Deploy-user"
+     user:
+       name: Deploy-user
+       group: deploy

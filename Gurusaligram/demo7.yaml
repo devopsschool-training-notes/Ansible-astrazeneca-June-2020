@@ -1,0 +1,11 @@
+---
+  - name: Install a package
+    hosts: localhost
+    
+    tasks:
+      - name: install git, wget
+        yum:
+          name: git
+          state: present
+          name: wget
+          state: present

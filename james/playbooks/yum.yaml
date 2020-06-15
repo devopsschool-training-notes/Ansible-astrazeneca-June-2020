@@ -1,0 +1,8 @@
+- name: This sets up an httpd webserver
+  hosts: server
+  tasks:
+  - name: Installing packages
+    yum:
+     name:
+       - git
+       - wget

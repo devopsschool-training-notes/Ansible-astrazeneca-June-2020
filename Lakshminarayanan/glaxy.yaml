@@ -1,12 +1,16 @@
- - name: Install git package
-    yum:
+---
+- hosts: web
+  tasks:
+ 
+   - name: Install git package
+     yum:
       name: git
       state: latest
-  - name: Install wget package
-    yum:
+   - name: Install wget package
+     yum:
       name: wget
       state: latest
-  - name: Clone GIT
-    git:
+   - name: Clone GIT
+     git:
       repo: https://github.com/scmgalaxy/ansible-role-template
       dest: /root

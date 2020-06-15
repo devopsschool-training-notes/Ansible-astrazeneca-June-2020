@@ -1,0 +1,6 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: create a user called deploy-user 
+    user: name=deploy-user groups=deploy
+

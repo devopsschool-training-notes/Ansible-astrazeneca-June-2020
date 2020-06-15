@@ -1,0 +1,5 @@
+- name: Index with content
+  hosts: localhost
+  tasks:
+  - name: INDEX
+    file: path=/var/www/html/index.html state=touch mode=0755

@@ -1,0 +1,7 @@
+---
+- name: This play to create package called git & wget
+  hosts: web	
+  tasks: 
+  - name: Create package for Git & Wget
+    package: name=git,wget state=present
+...	

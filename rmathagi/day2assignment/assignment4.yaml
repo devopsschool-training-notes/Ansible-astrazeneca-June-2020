@@ -1,0 +1,6 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Enable and start httpd package
+    service: name=httpd state=started enabled=yes
+

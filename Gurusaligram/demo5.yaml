@@ -1,0 +1,9 @@
+---
+  - name: Create a file
+    hosts: localhost
+    
+    tasks:
+      - name: create file
+        copy: 
+          src:index.html
+          dest:/var/www/html

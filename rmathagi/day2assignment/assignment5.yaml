@@ -1,0 +1,6 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+
+  - name: Create index.html
+    file: path=/var/www/html/index.html owner=deploy-user group=deploy state=touch

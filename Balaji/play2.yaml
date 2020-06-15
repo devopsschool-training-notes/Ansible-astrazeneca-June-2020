@@ -1,7 +1,13 @@
 ---
-- name: This play to create user
+
+- name:  create user
+
   hosts: web	
-  tasks: Task to create user
+
+  tasks: 
+
   - name: Create a User
+
     user: name=deploy-user shell=/bin/bash group=deploy
-...	
+
+...

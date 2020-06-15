@@ -1,0 +1,28 @@
+
+Program 1 – Write a Ansible Adhoc Commands to create a group called “deploy
+ansible all -i 15.206.146.71, -m group -a"name=deploy state=present" -u ec2-user --key-file=remote.pem
+
+Program 2 – Write a Ansible Adhoc Commands to create a user called “deploy-user” which is part of group called “deploy” and with /bin/bash shell.
+ansible all -i 15.206.146.71, -m user -a"name=deploy-user state=present group=deploy shell=/bin/bash" -u ec2-user --key-file=remote.pem
+Program 3 – Write a Ansible Adhoc commands install package named “httpd” in RHEL/centos.
+ansible all -i 15.206.146.71, -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem
+Program 4 – Write a Ansible Adhoc commands to start and enable the service named “httpd”
+ansible all -i 15.206.146.71, -m service -a"name=httpd state=started enabled=yes" -u ec2-user --key-file=remote.pem
+
+Program 5 – Write a Ansible commands to create a file called “index.html” in /var/www/html with some dummy html contents.
+ansible all -i 15.206.146.71, -m lineinfile -a "create=yes insertbefore=BOF path=/var/www/html/second.html line=velan state=present" -u ec2-user --key-file=remote.pem
+
+Program 6 – Write a Ansible commands to copy a file called “second.html” in /var/www/html/second.html with some dummy html contents.
+ansible all -i 15.206.146.71, -m copy -a"src=second.html dest=/var/www/html" -u ec2-user --key-file=remote.pem
+Program 7 – Write a Ansible commands to install a package called “git”, “wget”.
+ansible all -i 15.206.146.71, -m yum -a"name=git state=present" -u ec2-user --key-file=remote.pem
+ansible all -i 15.206.146.71, -m yum -a"name=wget state=present" -u ec2-user --key-file=remote.pem
+Program 8 – Write a Ansible Adhoc commands to clone git repo. https://github.com/scmgalaxy/ansible-role-template.
+ansible all -i 15.206.146.71, -m git -a "clone=yes dest=/tmp/ansible-role-template repo=https://github.com/scmgalaxy/ansible-role-template" -u ec2-user --key-file=remote.pem
+
+Program 9 – Write a Ansible commands to reboot a self machine.
+ansible all -i 15.206.146.71, -m reboot -a"msg=planned reboot the machine with all defaults"
+
+Program 10 – Write a Ansible commands to touch a file called "devopsschool.txt" in /opt/ and delete after using ansible adhoc command.
+ansible all -i 15.206.146.71, -m file -a"path=/opt/devopsschool.txt owner=deploy-user group=deploy state=touch" -u ec2-user --key-file=remote.pem
+ansible all -i 15.206.146.71, -m file -a"path=/opt/devopsschool.txt state=absent" -u ec2-user --key-file=remote.pem
