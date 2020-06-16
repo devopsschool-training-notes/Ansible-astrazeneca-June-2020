@@ -1,0 +1,7 @@
+---
+# Ansible play to create a group called "tamgp"
+- name: create group
+  host: localhost
+  group:
+    name: tamgp
+    state: present

@@ -1,0 +1,10 @@
+---
+# Ansible play to install package named “httpd”
+- name: install “httpd”
+  hosts: localhost
+  become: True
+  tasks:
+    - name: Install apache
+      yum:
+        name: httpd
+        state: present
