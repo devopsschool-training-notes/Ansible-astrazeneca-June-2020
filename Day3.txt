@@ -367,11 +367,110 @@ vars in group_vars ---ALL
 vars in group_vars ---group
 vars in host_vars ---host
 
+====================================================================
+FACT Variable
+	- FACT OF SERVER - MACHINE
+
+
+How to get SYSTEM information?
+====================================
+Ansible uses - factor
+
+How to get SYSTEM info using Ansible and using factor?
+==============================================
+setup 
+	- module
+
+<h1>
+Hello, 	ansible_distribution is {{ ansible_distribution }} and ansible_architecture {{ ansible_architecture }} and {{ ansible_os_family }}.</h1>
+ 
+ansible_distribution
+ansible_architecture
+ansible_os_family
+
+https://docs.ansible.com/ansible/latest/modules/setup_module.html
 
 
 
 
+- name: This sets up an httpd webserver
+  hosts: web
+  vars_files:
+    - "vars.yaml"
+  vars_prompt:
+    - name: "version"
+      prompt: "Which version Do you want to install?"
+      private: no
+  vars:
+    myname: rajesh
+    age: 23
+    port: 80
 
+
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+  - name: Install the httpd apps
+    yum: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/{{ age }}.txt state=touch
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+  - name: "shut down Debian flavored systems"
+    command: /sbin/shutdown -t now
+    when: ansible_os_family == "Debian"
+  - debug:
+      msg: My Name is Rajesh in RHEL
+    when: ansible_os_family == "RedHat"
+  - debug:
+      msg: My Name is Rajesh in UBUNTU
+    when: ansible_os_family == "Debian"
+
+  handlers:
+  - name: THIS IS handlers - restart
+    service: name=httpd state=restarted
+---------------------
+https://www.devopsschool.com/blog/anatomy-of-ansible-play-defined/
+-------------------------------------------
+We use FACT variable In Condition
+--------------------------------------------
+if windows
+	run windows module
+if linux- ub
+	run apt
+if linux - rhel 
+	run yum
+--------------------------------------------
+https://www.devopsschool.com/tutorial/ansible/ansible-conditional-programming-playbooks.html
+
+
+      - name: "shut down Debian flavored systems"
+        command: /sbin/shutdown -t now
+        when: ansible_os_family == "Debian"
+
+
+      - name: "shut down CentOS 6 systems"
+        command: touch /opt/verizon.txt
+        when:
+          - (ansible_distribution == "RedHat") or (ansible_distribution_major_version == "7.5")
+       
 
 
 
