@@ -1,0 +1,7 @@
+---
+- name: This play to install package
+  hosts: web	
+  tasks: 
+  - name: install package
+    yum: name=git,wget state=present
+...

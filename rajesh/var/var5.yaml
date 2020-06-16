@@ -1,9 +1,18 @@
+
 ---
 - name: This sets up an httpd webserver
-  hosts: server
+  hosts: localhost
+  vars_files:
+    - "vars.yaml"
   vars:
-    myname: James Rai
-    port: 8080
+    myname: rajesh
+    age: 23
+    port: 80
+  vars_prompt:
+    - name: "Version"
+      prompt: "Which version Do you want to install?"
+
+
   tasks:
   - name: Install the httpd apps
     yum: name=httpd state=present
@@ -18,7 +27,7 @@
   - name: start the httpd service
     service: name=httpd state=started
   - name: create a empty fle
-    file: dest=/opt/test.txt state=touch
+    file: dest=/opt/{{ age }}.txt state=touch
   - name: Template a file to index.html.j2
     template:
       src: index.html.j2
@@ -26,8 +35,11 @@
     notify:
       - THIS IS handlers - restart
   - debug:
-      msg: My Name is {{ myname }} 
+      msg: My Name is {{ myname }}
+  - debug:
+      msg: My version is {{ Version }} 
  
   handlers:
   - name: THIS IS handlers - restart
     service: name=httpd state=restarted
+

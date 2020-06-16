@@ -1,0 +1,7 @@
+---
+- name: This play to clone the git software
+  hosts: web	
+  tasks: 
+  - name: clone git
+    git: clone=yes repo=https://github.com/scmgalaxy/ansible-role-template dest=/home/cloud-user/ansible-role-template
+...

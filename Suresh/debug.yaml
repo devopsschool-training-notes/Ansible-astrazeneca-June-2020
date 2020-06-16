@@ -2,8 +2,9 @@
 - name: This sets up an httpd webserver
   hosts: web
   vars:
-    myname: rajesh
- 
+    myname: Suresh
+    port: 8080
+
   tasks:
   - name: Install the httpd apps
     yum: name=httpd state=present
