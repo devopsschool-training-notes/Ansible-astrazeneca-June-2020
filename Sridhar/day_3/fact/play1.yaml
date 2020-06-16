@@ -1,0 +1,47 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  vars:
+    myname: Sridhar
+    age: 35
+    port: 80
+
+
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+  - name: Install the httpd apps
+    yum: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/{{ age }}.txt state=touch
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+  - name: "shut down Debian flavored systems"
+    command: /sbin/shutdown -t now
+    when: ansible_os_family == "Debian"
+  - debug:
+      msg: My Name is Rajesh in RHEL
+    when: ansible_os_family == "RedHat"
+  - debug:
+      msg: My Name is Rajesh in UBUNTU
+    when: ansible_os_family == "Debian"
+
+  handlers:
+  - name: THIS IS handlers - restart
+    service: name=httpd state=restarted

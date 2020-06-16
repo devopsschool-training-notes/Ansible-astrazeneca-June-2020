@@ -1,0 +1,8 @@
+---
+  - name: This sets up an httpd webserver
+    hosts: localhost
+    tasks: 
+      - name: install httpd
+        yum: 
+          name: "{{ webname }}"
+          state: present

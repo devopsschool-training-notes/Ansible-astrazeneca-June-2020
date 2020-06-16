@@ -1,0 +1,15 @@
+- name: Install httpd on CentOs and Ubuntu
+  hosts: localhost
+  gather_facts: true
+  tasks:
+  - when: ansible_facts['os_family'] == "Debian"
+    name: Install apache2
+    apt:
+      name: apache2
+      state: present
+  - when: ansible_facts['os_family'] == "RedHat"
+    name: Install httpd
+    yum:
+      name: httpd
+      state: present
+ 

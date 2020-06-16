@@ -1,0 +1,22 @@
+---
+- name: This sets up an httpd webserver
+  hosts: app
+  vars:
+    service: httpd
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name={{ service }} state=present
+  - name: start the "{{ service }}" service
+    service: name="{{ service }}" state=started
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+
+  handlers:
+  - name: THIS IS handlers - restart
+    service: name="{{ service }}" state=restarted
+

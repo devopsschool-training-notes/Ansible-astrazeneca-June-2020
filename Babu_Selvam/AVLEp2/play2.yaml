@@ -1,0 +1,16 @@
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars_prompt:
+    - name: "server"
+      prompt: "Which server do you want to install?"
+      private: no
+    - name: "source"
+      prompt: "Which source is this?"
+      private: no
+
+  tasks:
+  - name: Install the httpd server
+    yum: name={{ server }} state=present
+  - debug:
+      msg: Source {{ source }}

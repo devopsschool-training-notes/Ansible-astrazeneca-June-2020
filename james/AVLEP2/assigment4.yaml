@@ -1,0 +1,22 @@
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars_prompt:
+    - name: "name"
+      prompt: "name of the package"
+    - name: "service"
+      prompt: " Name of the service"
+    - name: "src"
+      prompt: " Source path"
+    - name: "dest"
+      prompt: "destination path"
+  tasks:
+  - name: Install the httpd apps
+    yum: name={{name}} state=present
+  - name: start the httpd service
+    service: name={{name}} state=started
+  - name: copy files
+    copy: src=index.html dest=/var/www/html/index.html
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
