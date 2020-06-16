@@ -493,6 +493,216 @@ Ansible Playbook Lab & Excercise – Part 3
 https://www.devopsschool.com/blog/ansible-playbook-lab-excercise-part-3/
 Naming Convention of Dir- APLEp3
 
+=======================================================================================================
+=======================================================================================================
+======================================PLAYBOOK=================================================================
+Variables???		---- TO MANY VARIABLES?
+Templates???		---- TO MANY TEMPLATES
+Files?			 ---- TO MANY FILES
+Handlers?????		---- TO MANY HANDERS
+TASKS???		---- TO MANY TASKS
+=======================================================
+ How to 
+	- org well
+	- Manage well
+	- Share with ease
+	- Run with ease?
+	of 
+
+		Variables???		---- TO MANY VARIABLES?
+		Templates???		---- TO MANY TEMPLATES
+		Files?			 ---- TO MANY FILES
+		Handlers?????		---- TO MANY HANDERS
+		TASKS???		---- TO MANY TASKS
+		Plays
+---------------------------------------------------------------
+		ROLE
+			Fixed Directory Struc
+
+
+
+- name: This sets up an httpd webserver
+  hosts: web
+  vars_prompt:
+    - name: "version"
+      prompt: "Which version Do you want to install?"
+      private: no
+  vars:
+    myname: rajesh
+    age: 23
+    port: 80
+
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+  - name: Install the httpd apps
+    yum: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/{{ age }}.txt state=touch
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+  - name: "shut down Debian flavored systems"
+    command: /sbin/shutdown -t now
+    when: ansible_os_family == "Debian"
+  - debug:
+      msg: My Name is Rajesh in RHEL
+    when: ansible_os_family == "RedHat"
+  - debug:
+      msg: My Name is Rajesh in UBUNTU
+    when: ansible_os_family == "Debian"
+
+  handlers:
+  - name: THIS IS handlers - restart
+    service: name=httpd state=restarted
+
+
+SCNARIO - 
+PLAYBOOK 
+	PLAY
+	PLAY
+	PLAY
+
+SCNARIO 1 - ONE PLAYBOOK CAN CALL 2 PLAY(Sep file)
+SCNARIO 1 - ONE PLAYBOOK CAN CALL Seprate Tasks file.
+	
+https://www.devopsschool.com/blog/ansible-include-scnario-with-list-of-plays-or-tasks/
+
+- name: This sets up an httpd webserver
+  hosts: web
+  vars_prompt:
+    - name: "version"
+      prompt: "Which version Do you want to install?"
+      private: no
+  vars:
+    myname: rajesh
+    age: 23
+    port: 80
+
+
+  tasks:
+    - name: Include task list in play
+      include: one.yaml
+    - name: Include task list in play
+      include: two.yaml
+
+=====================================================
+=====================================================
+=====================================================
+=====================================================
+
+- include: play1.yaml
+- include: play2.yaml
+
+
+
+
+- name: This sets up an httpd webserver
+  hosts: web
+
+  tasks:
+  - debug:
+      msg: My Name is Rajesh in RHEL
+
+
+- name: This sets up an httpd webserver
+  hosts: web
+
+  tasks:
+  - debug:
+      msg: My Name is Rajesh in Play2
+
+
+
+=======================================================================================================
+=======================================================================================================
+======================================PLAYBOOK=================================================================
+Variables???		---- TO MANY VARIABLES?
+Templates???		---- TO MANY TEMPLATES
+Files?			 ---- TO MANY FILES
+Handlers?????		---- TO MANY HANDERS
+TASKS???		---- TO MANY TASKS
+=======================================================
+ How to 
+	- org well
+	- Manage well
+	- Share with ease
+	- Run with ease?
+	of 
+
+		Variables???		---- TO MANY VARIABLES?
+		Templates???		---- TO MANY TEMPLATES
+		Files?			 ---- TO MANY FILES
+		Handlers?????		---- TO MANY HANDERS
+		TASKS???		---- TO MANY TASKS
+
+---------------------------------------------------------------
+		ROLE
+			Fixed Directory Struc
+
+
+
+[root@ip-172-31-17-140 rolework]# ansible-galaxy init web
+- Role web was created successfully
+[root@ip-172-31-17-140 rolework]# tree
+.
+└── web
+    ├── defaults			# Default vars
+    │   └── main.yml
+    ├── files				# for files and script used in tasks.
+    ├── handlers			# For all Handlers tasks
+    │   └── main.yml
+    ├── meta				# For meta info about Roles
+    │   └── main.yml
+    ├── README.md
+    ├── tasks				# For all TASKS
+    │   └── main.yml
+    ├── templates			# For all .j2 files
+    ├── tests				# AT and UT TEST
+    │   ├── inventory
+    │   └── test.yml
+    └── vars				# user defined vars
+        └── main.yml
+
+--------------------------------------
+
+- name: This sets up an httpd webserver
+  hosts: web
+
+  roles:
+  - web
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
