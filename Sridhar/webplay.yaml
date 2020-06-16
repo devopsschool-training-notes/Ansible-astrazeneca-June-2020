@@ -56,6 +56,9 @@
 
 - name: Cloning git repo https://github.com/scmgalaxy/ansible-role-template
   hosts: web
+  environment:
+      http_proxy: 'http://web-proxy:8080'
+      https_proxy: 'http://web-proxy:8080'
   tasks:
   - name: cloning....
     git: repo=https://github.com/scmgalaxy/ansible-role-template clone=yes dest=./ansible-role-template
