@@ -1,0 +1,393 @@
+Lab - 
+	AWS
+
+Start - 9:30 AM - 5:30 PM
+Lunch - 1:00 - 1.45
+BREAk - 11:00 - 15min max
+	3:30 - 15min max
+===========================================
+ANYTHING AS A Service
+===========================================
+
+
+What is DevOps?
+	3 PERSON
+		ONE PERSON Code for Product 
+		ONE PERSON Code for TESTING A PROD
+		ONE PERSON Code for INFRA FOr pro and DEV
+		-----------CODE---------------------------
+GOAL
+- Immediate Release --->  1 YEAR -----> 2 WEEKS ------>  5 mins ------> 1 SEC
+------------------------------INTERNET---------------------------------------
+
+- Cost Reduction - 
+		RUNNING COST
+		DEV COST
+- RUNNING COST(PLATFORM)  ----> PHYSCIAL  -----> VMs ---------> Container --> Kubernetes -> ServiceMESH
+- Software Model --->  WasterFall   ---> Agile ---->(SRE) DevOps   -----> DevSecOps
+- Software Arch ----> Monolithic ----> SOA -----> Microservice 
+
+- Improving a QUALIty - BETTER Integ
+===============================================================================================
+
+
+How Ansible is Playing a good role in DevOps?
+===============================================
+SOA 			- SO MANY SERVER(S)
+DEV			- SO MANY SERVER(S)
+QA			- SO MANY SERVER(S)	
+Microservice 		- SO MANY SERVER(S)
+PROD			- SO MANY SERVER(S)
+-----------------------------------------------------			
+			ENV	- 100
+				DB OR AP OR LB
+				5     30    40 
+
+How can i change a setup in 100 SERVERS in one GO???
+=======================================================
+What is Ansible?
+	Config mgmt tool
+	From - Redhat
+	Written - in Python
+	Release
+		Community   CMD		Ansible		FREE
+		Enterprise  CMD+GUI	Tower		PAID
+	Powered by 
+		4000 Modules & 5000 Roles
+	Agentless
+
+What is Config?
+	SERVER(S) Config mgmt
+
+What is there in "SERVER"?
+
+HARDWARE
+	Ansible
+		HYPER
+			cpu
+			ram
+			storage
+SOFTWARE
+		packages
+		file
+		directory
+		service
+PEOPLE
+		user
+PROCESS
+		Policy
+
+Why Ansible?
+	IT CAN DEPLOY-CHANGE-CONFIG do in multiple server - Parrel.
+	Ansible is easy to learn-share-debug-test-extend compare to ALL programming lang. Its DSL
+	Ansible is PLATFORM INDependent
+	Ansible is IDOMPOTENT
+	-------------
+	1ST Dep ---- 10 STEPS -> 10 MINS --
+	2nd ---2 Step -----2 Step - 2 mins.	
+
+How Ansible Works?
+ACS - Ansible Control Server		
+ARS - Ansible Remote Server
+
+HUMAN		ACS			ARS
+COMMANDS	LINUX			ANYTHING
+		64 BIT			ANYTHING
+
+		Ansible			Nothing
+				WINDOS	WINRM (HTTP)
+				LINUX   SSH (SSH)
+
+			  WINDOWS	DOTNET4.0 + WINRM + Powershell 3.X
+			  Linux		SSH + Python
+=========================================================
+
+What are a role in Ansible?
+Dev	- A person who would write a code and test a code
+		- Write a playbook/role and test playbook/role 
+
+Ops
+	- A person who would apply a code in infra and manage infra.
+			- Apply playbook/role on infra(inventory) and manage infra(authentication+authorization)
+-----------------------------------------------
+Compiled -> Interpret ---> Declarative
+				XML -> YAMl -> JSON
+			  Domain Spec lang
+				Ansible
+				  Designed 
+					Compiled lang or intr
+						python
+------------------------------------------------
+
+How you want to become a JAVA Dev?
+-------------------------------------------
+JDK -> .JAVA -> .Class  -> JAR  ----> War
+	--------			JAR
+	Variables			manifest + css + js + html + db
+	Operators
+	Conditioning
+	Looping
+	method (main default)
+	
+How to become Ansible Dev?
+Ansible --> .yaml(PLAYBOOK) -> Role
+				playbooks******
+				files + template + handlers + variable
+	Variables			
+	Operators
+	Conditioning
+	Looping
+
+Other tools ---> Ansible -> Puppet -> Chef --> Salt -> Cfengine
+======================================================================================
+	Ansible 	PUPPET			CHEF
+COMMON 	ALL		ALL			ALL
+	Python		Ruby			Ruby
+	SSH+HTTP	TCP			TCP
+	AgentLess	Agent			Agent
+	.yanml		.pp			.rb
+	playbook	manifest		cookbook
+	role		module			role
+	jinza		ruby tem		ruby tem
+	facter		facter			ohai
+	PUSH+PULL	PUSH+PULL		PUSH+PULL
+
+
+======================================================================================
+What are the components of ACS?
+
+Ansible
+	Modules
+	Config
+
+inventory	# by Ops		
+	- Concept which would have following...
+	- localhost
+	- List of IP add over command line
+	- List of IP add in file 		INI format
+	- List of IP add in script		anything
+	- List of IP add in directory
+
+Playbook/ROLS	# by Dev
+
+===========================================================================
+What is Module?
+	Piece of code inbuild at ACS which comes with Ansible Installation.
+	Each module - IT WOULD DO ONE WORK
+	Require PARAM from Human/Scrpt
+	Written in ANY PROGRAM
+		LINUX - python
+		WIN - pS + DOTnEt
+	Where i would find list of all modules??????
+			- All params???????
+	https://docs.ansible.com/ansible/latest/modules/modules_by_category.html
+
+What is Config?
+	a file 
+	location any places
+		but /etc/ansible/ansible.cfg
+	Content - All behaviour of ansible
+		Some of them set default.
+	
+What is inventory?
+	- Concept which would have following...
+	- localhost
+	- List of IP add over command line
+	- List of IP add in file 		INI format
+	- List of IP add in script		anything
+	- List of IP add in directory
+
+What is Playbook?
+	Collection of PLAY.
+	
+	PLAY 1
+		HOSTS	localhost or all
+		TASKS
+			Task1 = Module 1 and its param
+			Task2 = Module 1 and its param
+			Task3 = Module 1 and its param
+		
+	PLAY 2		
+		HOSTS  localhost or all
+		TASKS
+			Task1 = Module 1 and its param
+			Task2 = Module 1 and its param
+			Task3 = Module 1 and its param
+
+	PLAY 3
+		HOSTS   localhost or all
+		TASKS
+			Task1 = Module 1 and its param
+			Task2 = Module 1 and its param
+			Task3 = Module 1 and its param
+
+	PLAY 4		 localhost or all
+		HOSTS
+		TASKS
+			Task1 = Module 1 and its param
+			Task2 = Module 1 and its param
+			Task3 = Module 1 and its param
+
+What is PLAY?	
+	Each play has HOST + TASKS Spec.
+	
+		Variables			
+		Operators
+		Conditioning
+		Looping
+
+
+What is HOST?
+	IT IS a localhost/group of inventory[Default all/ungroup]
+
+What is tasks?	
+TASKS
+		Collection of Modules and its param.
+		Task1 = Module 1 and its param
+		Task2 = Module 2 and its param
+		Task3 = Module 3 and its param
+		Task4 = Module 3 and its param
+=========================================================================
+How to install Ansible?
+
+RHEL-7.5_HVM_GA-20180322-x86_64-1-Hourly2-GP2 (ami-5b673c34)
+
+https://www.devopsschool.com/blog/how-to-install-ansible-in-centos-7-rhel-7/
+13.233.229.147
+ec2-user
+
+$ sudo yum install wget -y
+$ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+$ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+$ sudo rpm -i epel-release-latest-7.noarch.rpm
+$ sudo yum install ansible -y
+
+What is your prblem? AKA project
+==============================
+Setup a webserver
+
+Setup a application
+
+
+pseudocode?
+------------------
+Step 1 - Install a httpd server			yum 	name=httpd  state=present
+Step 2 - Copy a Deployment file - index.html	copy	src=index.html dest=/var/www/html
+Step 3 - Start a service			service name=httpd state=started
+
+"ansible module for XXXXX"
+
+Step 1 - install JDK or JRE
+Step 2 - Install Tomcat
+Step 3 - install mysql
+Step 4 - Modify a tomcat config
+Step 5 - Modify a mysql config
+Step 6 - Copy your package
+Step 7 - Copy ur sql db
+Step 8 - Do extra
+Step 9 - Start a SVC
+
+==================================================================
+Adhoc commands...	
+	optional arguments:
+	Connection Options:
+	Privilege Escalation Options
+
+ansible localhost -m yum -a"name=httpd state=present"
+ansible localhost -m copy -a"src=index.html dest=/var/www/html"
+ansible localhost -m service -a"name=httpd state=started" 
+
+ansible -i 13.232.125.254 -m copy -a"src=index.html dest=/var/www/html"
+ansible -i 13.232.125.254, -m copy -a"src=index.html dest=/var/www/html"
+
+
+ansible all -i 13.232.125.254, -m copy -a"src=index.html dest=/var/www/html"
+
+==[[[[ DID YOU UNDERSTAND IMPORTANT OF ANSIBLE CONFIG FILE ]]=====
+
+
+ACS (Linux) 		- ARS (LINUX)
+SSH
+	AUTHENTICATION			AUTHORIZATION
+	USER ID & PASSWORD		sudo without password	
+	USER ID & KEY			sudo With password
+					sudo With DIFF USER AND PASSWORD
+ACS (Linux) 		- ARS (WINDOW)
+WINRM
+	AUTHENTICATION			AUTHORIZATION	
+	USER ID & PASSWORD		USER ID & PASSWORD
+
+ansible all -i 13.232.125.254, -m copy -a"src=index.html dest=/var/www/html"
+
+ansible all -i 13.232.125.254, -m copy -a"src=index.html dest=/var/www/html" -u ec2-user -k
+ansible all -i 13.232.125.254, -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=remote.pem
+
+chmod 600 remote.pem
+
+ansible all -i 13.232.125.254, -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem
+ansible all -i 13.232.125.254, -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=remote.pem
+
+ansible all -i 13.232.125.254, -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem -b
+
+ansible all -i 13.232.125.254, -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem -b -K
+
+ansible all -i 13.232.125.254, -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem --become-user common-user -b -K
+
+
+------------------------
+ansible all -i 13.232.125.254, -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem -b
+ansible all -i 13.232.125.254, -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=remote.pem -b
+ansible all -i 13.232.125.254, -m service -a"name=httpd state=started" -u ec2-user --key-file=remote.pem -b  
+
+
+ansible all -i 13.232.125.254,13.233.229.147, -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem -b
+ansible all -i 13.232.125.254,13.233.229.147, -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=remote.pem -b
+ansible all -i 13.232.125.254,13.233.229.147, -m service -a"name=httpd state=started" -u ec2-user --key-file=remote.pem -b  
+
+
+
+Madhuvanthiy Chandar	52.66.201.162
+Tamilselvan Rajapandian	13.127.10.80
+singaravelan senthilkarasu	15.206.146.71
+Babu Selvam	13.127.240.68
+Kannan Jayakumar	35.154.237.183
+Dhyaneswaran K J	13.126.247.236
+Rajsh Selvaraj	13.235.242.143
+Nagesh kumar	13.232.189.222
+Guru Pandian	13.127.230.47
+Venkatesh Damodharan	13.126.90.245
+R Mathagi Arun	13.233.237.127
+Balamurugan	13.233.195.221
+Balaji T R	13.233.229.147
+mohit	13.127.61.86
+Sivashankar Murugan	13.127.66.199
+Surendhiran	3.6.87.133
+Suresh Anandan	13.232.181.148
+Lakshminarayanan	13.127.225.87
+James	35.154.27.171
+Babu Srinivasan	15.206.79.254
+
+User name - ec2-user
+Key - https://www.devopsschool.com/notes/docker/2019/
+file - 
+rajesh-mumbai.ppk for putty
+rajesh-mumbai.pem for ssh
+
+Lab - As mentioned Above.
+Assignment - https://www.devopsschool.com/blog/ansible-adhoc-commands-lab-excercise-part-1/
+
+kannanjm
+rmathagi
+gurusaligram
+babu-selvam
+nageshgvr
+dhyanes
+sivashankar84
+balamurugan202
+singaravelan74
+
+
+
+
+
+
