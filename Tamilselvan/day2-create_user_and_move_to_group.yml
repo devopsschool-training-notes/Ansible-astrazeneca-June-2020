@@ -1,0 +1,11 @@
+---
+# Ansible play to create a user called “tamil" member of the group "tamgp"
+- name: create user
+  host: localhost
+  tasks: 
+    user:
+      name: tamil
+      state: present
+    group:
+      name: tamgp
+      createhome: yes

@@ -1,0 +1,7 @@
+---
+# put sample index.html file on apache
+- name: sample index.html
+  host: localhost
+      copy:
+        src: index.html
+        dest: /var/www/html/

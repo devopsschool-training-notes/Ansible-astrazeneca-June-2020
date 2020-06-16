@@ -1,0 +1,8 @@
+---
+# Enable and start httpd service
+- name: start and enable
+  host: localhost
+       service:
+         name: httpd
+         state: started
+         enabled: True

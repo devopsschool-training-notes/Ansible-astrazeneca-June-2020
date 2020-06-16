@@ -1,0 +1,27 @@
+ansible all -i 13.126.247.236, -m group -a"name=deploy state=present" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236, -m user -a"name=deploy-user state=present" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ ansible all -i 13.126.247.236, -m yum -a"name=httpd state=present" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236, -m yum -a"name=httpd state=present" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236, -m file -a"dest=/var/www/html/index.html state=touch mode=600 owner=deploy-user group=deploy" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236, -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236, -m yum -a"name=git state=present" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236, -m yum -a"name=wget state=absent" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236,  -m git -a"repo=https://github.com/scmgalaxy/ansible-role-template dest=/root/ansible-role-template" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236, -m shell -a 'init 6'
+
+ansible all -i 13.126.247.236, -m file -a"dest=/opt/devschools.txt  state=touch   mode=7760 owner=deploy-user group=deploy" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+ansible all -i 13.126.247.236, -m file -a"dest=/opt/devschools.txt  state=absent   mode=7760 owner=deploy-user group=deploy" -u ec2-user --key-file=rajesh-mumbai.pem -b
+
+
+
+

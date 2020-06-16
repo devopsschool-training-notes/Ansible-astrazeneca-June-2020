@@ -1,0 +1,10 @@
+---
+# install a package called “wget”
+- name: install “wget”
+  hosts: localhost
+  become: True
+  tasks:
+    - name: Install wget
+      yum:
+        name: wget
+        state: present
