@@ -471,9 +471,27 @@ https://www.devopsschool.com/tutorial/ansible/ansible-conditional-programming-pl
         when:
           - (ansible_distribution == "RedHat") or (ansible_distribution_major_version == "7.5")
        
+=====================================================================================
+
+Ansible Inventory Lab & Excercise – Part 1
+--------------------------------------------
+https://www.devopsschool.com/blog/ansible-inventory-lab-excercise-part-1/
+Naming Convention of Dir- AILEp1
 
 
+Ansible Variable Lab & Excercise – Part 1
+https://www.devopsschool.com/blog/ansible-variable-lab-excercise-part-1
+Naming Convention of Dir- AVLEp1
 
+Ansible Variable Lab & Excercise – Part 2
+--------------------------------------------
+https://www.devopsschool.com/blog/ansible-variable-lab-excercise-part-2/
+Naming Convention of Dir- AVLEp2
+
+Ansible Playbook Lab & Excercise – Part 3
+-------------------------------------------
+https://www.devopsschool.com/blog/ansible-playbook-lab-excercise-part-3/
+Naming Convention of Dir- APLEp3
 
 
 
