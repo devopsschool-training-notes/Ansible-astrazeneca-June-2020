@@ -1,0 +1,19 @@
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars:
+    myname: James Rai
+    age: 23
+    port: 80
+
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: present 
+  - debug:
+      msg: My Name is {{ myname }} 
+  - debug:      
+      msg: My Age is {{ age }}
+  - debug:
+      msg: My port is {{ port }}

@@ -1,0 +1,15 @@
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  tasks:
+  - name: Install the httpd apps
+    yum: name={{ package }} state=installed
+  - name: start the httpd service
+    service: name={{ server }} state=started
+  - name: create a empty fle
+    file: dest=/opt/test.txt state=touch
+  - name: copy a file
+    copy: dest=/var/www/html/ src="index.html"
+  - name: Ansible debug print example.
+    debug:
+      msg: "Varilabe in invetory has been succesfully tested"

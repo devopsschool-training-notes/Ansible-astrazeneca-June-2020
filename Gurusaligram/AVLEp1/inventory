@@ -1,0 +1,10 @@
+[web]
+localhost ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes
+
+
+[web:vars]
+server="httpd"
+package="httpd"
+ansible_user=ec2-user
+ansible_ssh_private_key_file=remote.pem
+ansible_become=yes

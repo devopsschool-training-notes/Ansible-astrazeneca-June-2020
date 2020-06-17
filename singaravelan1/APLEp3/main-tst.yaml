@@ -1,0 +1,12 @@
+- name: This sets up an include test
+  hosts: dev
+  vars:
+    myname: singaravelan
+    age: 23
+  tasks:
+  - debug:
+      msg: calling from main on RHEL
+    when: ansible_os_family == "RedHat"
+  - debug:
+      msg: calling from main on  UBUNTU
+    when: ansible_os_family == "Debian"

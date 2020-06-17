@@ -1,0 +1,50 @@
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  vars_files:
+    - "vars.yaml"
+  vars_prompt:
+    - name: "version"
+      prompt: "Which version Do you want to install?"
+      private: no
+  vars:
+    myname: Sridhar
+    age: 35
+    port: 80
+
+
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/{{ age }}.txt state=touch
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+  - name: include default step variables
+    include_vars: tasks_var.yml
+  - debug:
+      msg: My Name is {{ myname }}
+  - debug:
+      msg: My Name is {{ version }}
+  - debug:
+      msg: My Name is {{ varinhost }}
+
+  handlers:
+  - name: THIS IS handlers - restart
+    service: name=httpd state=restarted
+

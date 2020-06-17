@@ -1,0 +1,37 @@
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars:
+    myname: Sridhar
+    age: 35
+    port: 80
+  vars_files:
+    - "vars.yaml"
+
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: create a empty fle
+    file: dest=/opt/{{ age }}.txt state=touch
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+  - debug:
+      msg: My Name is {{ myname }} 
+ 
+  handlers:
+  - name: THIS IS handlers - restart
+    service: name=httpd state=restarted

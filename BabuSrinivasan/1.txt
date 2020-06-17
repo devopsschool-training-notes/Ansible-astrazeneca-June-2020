@@ -1,0 +1,1000 @@
+  132  rm remote.pem
+  133  ls
+  134  cd
+  135  ls
+  136  cd /root/Ansible-astrazeneca-June-2020/Balamurugan/
+  137   cp /root/Ansible-astrazeneca-June-2020/Suresh/remote.pem /root/Ansible-astrazeneca-June-2020/Balamurugan
+  138  ansible-playbook -i inventory play1.yaml
+  139  clear
+  140  cdl
+  141  cd
+  142  ls
+  143  cd Ansible-astrazeneca-June-2020/
+  144  clear
+  145  ls
+  146  cd rajesh
+  147  ls
+  148  clear
+  149  ls
+  150  vi 1.yaml
+  151  ansible-playbook -i temp 1.yaml 
+  152  clear
+  153  ls
+  154  vi index.html
+  155  ansible-playbook -i temp 1.yaml 
+  156  clear
+  157  ls
+  158  mkdir tempate
+  159  mv tempate template
+  160  ls
+  161  cp index.html remote.pem temp template/
+  162  cd template/
+  163  clear
+  164  ls
+  165  cp index.html index.html.j2
+  166  more index.html.j2
+  167  clear
+  168  ls
+  169  clear
+  170  ls
+  171  cd /root/Ansible-astrazeneca-June-2020/Balamurugan/
+  172  vi play2.yaml
+  173  ansible-playbook -i inventory play2.yaml
+  174  id
+  175  cat /etc/hosts
+  176  ifconfig -a
+  177  mkdir nagesh
+  178  ls -ltr
+  179  cd nagesh
+  180  ls -ltr
+  181  cd /root/Ansible-astrazeneca-June-2020/Balamurugan/
+  182  vi play8.yaml
+  183  ansible-playbook -i inventory play8.yaml
+  184  vi play8.yaml
+  185  ansible-playbook -i inventory play8.yaml
+  186  vi play8.yaml
+  187  ansible-playbook -i inventory play8.yaml
+  188  vi play9.yaml
+  189  ansible-playbook -i inventory play9.yaml
+  190  vi play9.yaml
+  191  ansible-playbook -i inventory play9.yaml
+  192  vi play9.yaml
+  193  ansible-playbook -i inventory play9.yaml
+  194  clear
+  195  vi play9.yaml
+  196  ansible-playbook -i inventory play9.yaml
+  197  ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+  198  JSON: No JSON object could be decoded
+  199  Syntax Error while loading YAML.
+  200    found a tab character that violate intendation
+  201  The error appears to be in '/root/Ansible-astrazeneca-June-2020/Balamurugan/play9.yaml': line 6, column 16, but may
+  202  be elsewhere in the file depending on the exact syntax problem.
+  203  The offending line appears to be:
+  204      group: name=deploy1 state=present
+  205                 ^ here
+  206  There appears to be both 'k=v' shorthand syntax and YAML in this task. Only one syntax may be used.
+  207  There appears to be a tab character at the start of the line.
+  208  YAML does not use tabs for formatting. Tabs should be replaced with spaces.
+  209  For example:
+  210      - name: update tooling
+  211        vars:
+  212          version: 1.2.3
+  213  #    ^--- there is a tab there.
+  214  Should be written as:
+  215      - name: update tooling
+  216        vars:
+  217          version: 1.2.3
+  218  # ^--- all spaces here.
+  219  vi play9.yaml
+  220  ansible-playbook -i inventory play9.yaml---
+  221  - name: This is to create Group
+  222    hosts: web
+  223    tasks:
+  224    - name: Create a group
+  225      group: name=deploy1 state=present
+  226  - name: This play to create user
+  227    hosts: web
+  228    tasks: 
+  229    - name: Create a User
+  230      user: name=deploy-user1 shell=/bin/bash group=deploy
+  231  - name: This play to create httpd package
+  232    hosts: web
+  233    tasks: 
+  234    - name: Create a httpd package
+  235      yum: name=httpd state=present
+  236   
+  237  - name: This play to start httpd service
+  238    hosts: web
+  239    tasks: 
+  240    - name: start httpd service
+  241      service: name=httpd state=started
+  242  - name: This play to create index.html
+  243    hosts: web
+  244    tasks: 
+  245    - name: create index.html
+  246      file: name=index1.html path=/var/www/html state=file
+  247  - name: This play to install package
+  248    hosts: web
+  249    tasks: 
+  250    - name: install package
+  251      yum: name=git,wget state=present
+  252  - name: This play to clone the git software
+  253    hosts: web
+  254    tasks: 
+  255    - name: clone gi
+  256      git: clone=yes repo=thttps://github.com/scmgalaxy/ansible-role-template dest=/home/cloud-user/ansible-role-template
+  257  - name: This play to create Reboot the host
+  258    hosts: web
+  259    tasks: 
+  260    - name: Reboot the machine
+  261  vi play9.yaml
+  262  ansible-playbook -i inventory play9.yaml
+  263  vi play9.yaml
+  264  ansible-playbook -i inventory play9.yaml
+  265  vi play9.yaml
+  266  ansible-playbook -i inventory play9.yaml
+  267  vi play9.yaml
+  268  ansible-playbook -i inventory play9.yaml
+  269  ls
+  270  cd ec2-user
+  271  cd home
+  272  cd root
+  273  cd /
+  274  ls
+  275  cd home
+  276  ls
+  277  cd ec2-user/
+  278  ls
+  279  git
+  280  git https://github.com/devopsschool-training-notes/Ansible-astrazeneca-June-2020.git
+  281  git clone https://github.com/devopsschool-training-notes/Ansible-astrazeneca-June-2020.git
+  282  cd Ansible-astrazeneca-June-2020/
+  283  dir
+  284  mkdir BabuSrinivasan
+  285  git status
+  286  git add .
+  287  git commit -m "test"
+  288  git push master
+  289  git push
+  290  ls
+  291  cd Ba
+  292  cd BabuSrinivasan/
+  293  ls
+  294  touch a.yaml
+  295  ls
+  296  git status
+  297  cd ..
+  298  git status
+  299  git add .
+  300  git commit
+  301  git commit -m "test"
+  302  git push master
+  303  git status
+  304  cd /root/Ansible-astrazeneca-June-2020/
+  305  cd Dhyanes/
+  306  ls -lrt
+  307  vi web.yaml 
+  308  ansible-playbook web  -i inventory.ini  web.yaml  -u ec2-user --key-file=rajesh-mumbai.pem -b
+  309  ansible-playbook  -i inventory.ini  web.yaml  -u ec2-user --key-file=rajesh-mumbai.pem -b
+  310  vi web.yaml 
+  311  rm -rf web.yaml
+  312  vi web.yaml
+  313  ansible-playbook  -i inventory.ini  web.yaml  -u ec2-user --key-file=rajesh-mumbai.pem -b
+  314  vi inventory 
+  315  vi web.yaml 
+  316  vi inventory 
+  317  ansible-playbook  -i inventory.ini  web.yaml  -u ec2-user --key-file=rajesh-mumbai.pem -b
+  318  cd /etc/hosts
+  319  vi /etc/hosts
+  320  mkdir /etc/ansible/hosts
+  321  vi /etc/ansible/hosts 
+  322  ansible-playbook  -i localhosts  web.yaml  -u ec2-user --key-file=rajesh-mumbai.pem -b
+  323  vi inventory 
+  324  ls -lrt
+  325  ansible-playbook  -i inventory.ini  web.yaml
+  326  ls -lrt
+  327  ls -lrt
+  328  more inventory 
+  329  ansible-playbook  -i inventory  web.yaml
+  330  vi temp
+  331  ansible-playbook  -i temp  web.yaml
+  332  vi web.yaml 
+  333  vi web.yaml 
+  334  ansible-playbook  -i temp  web.yaml
+  335  vi temp
+  336  vi web.yaml 
+  337  ansible-playbook  -i temp  web.yaml
+  338  cd /root
+  339  ls -lrt
+  340  cd /Ansible-astrazeneca-June-2020
+  341  cd Ansible-astrazeneca-June-2020
+  342  cd Sridhar
+  343  cat var_play.yaml
+  344  cat > var_play.yaml
+  345  ls -lrt
+  346  notepad var_play.yaml
+  347  notepad++ var_play.yaml
+  348  yum install notepad
+  349  yum install notepad++
+  350  ls -lrt
+  351  vi var_play.yaml 
+  352  ansible-playbook -i inventory var_play.yaml 
+  353  vi var_play.yaml 
+  354  ansible-playbook -i inventory var_play.yaml 
+  355  vi var_play.yaml 
+  356  ansible-playbook -i inventory var_play.yaml 
+  357  cd /root/Ansible-astrazeneca-June-2020/Balamurugan/
+  358  ---
+  359  - name: This play to create httpd package
+  360    hosts: web
+  361    tasks: 
+  362    - name: Create a httpd package
+  363      yum: name=httpd state=present
+  364  ls
+  365  play3.yaml
+  366  vi play3.yaml
+  367  ansible-playbook -i inventory play3.yaml
+  368  vi play4.yaml
+  369  ansible-playbook -i inventory play4.yaml
+  370  vi play4.yaml
+  371  ansible-playbook -i inventory play4.yaml
+  372  vi play5.yaml
+  373  ansible-playbook -i inventory play5.yaml
+  374  vi play5.yaml
+  375  ansible-playbook -i inventory play5.yaml
+  376  vi play6.yaml
+  377  ansible-playbook -i inventory play6.yaml
+  378  vi play6.yaml
+  379  ansible-playbook -i inventory play6.yaml
+  380  vi play6.yaml
+  381  ansible-playbook -i inventory play6.yaml
+  382  vi play7.yaml
+  383  ansible-playbook -i inventory play7.yaml
+  384  cd /root/Ansible-astrazeneca-June-2020/
+  385  ls -lrt
+  386  cd Balamurugan/
+  387  ls -lrt
+  388  vi play9.yaml 
+  389  clear
+  390  more play9.yaml 
+  391  vi play9.yaml 
+  392  ansible-playbook -i inventory play9.yaml
+  393  vi play9.yaml 
+  394  vi play9.yaml 
+  395  ansible-playbook -i inventory play9.yaml
+  396  vi play9.yaml 
+  397  ansible-playbook -i inventory play9.yaml
+  398  vi play9.yaml 
+  399  ansible-playbook -i inventory play9.yaml
+  400  vi play9.yaml 
+  401  ansible-playbook -i inventory play9.yaml
+  402  vi play9.yaml 
+  403  ansible-playbook -i inventory play9.yaml
+  404  more play9.yaml 
+  405  cd /root/Ansible-astrazeneca-June-2020/Madhu
+  406  cd root
+  407  cd /root
+  408  ls lrt
+  409  ls -lrt
+  410  cd Ansible-astrazeneca-June-2020
+  411  cd Sridhar
+  412  vi webplay.yaml 
+  413  ansible-playbook -i inventory webplay.yaml
+  414  ls -lrt
+  415  ls -lrt
+  416  ls -lrt
+  417  cd /root/Ansible-astrazeneca-June-2020/
+  418  ls -lrt
+  419  git status
+  420  git add --all
+  421  git pusg origin
+  422  git push origin
+  423  git pull
+  424  clear
+  425  cd /root/Ansible-astrazeneca-June-2020/Balamurugan/
+  426  vi play9.yaml
+  427  ansible-playbook -i inventory play9.yaml
+  428  cd Ansible-astrazeneca-June-2020/
+  429  ls -ltr
+  430  cd Nagesh
+  431  ls -ltr
+  432  vi inv
+  433  cd Lab1
+  434  more Lab1
+  435  vi play1
+  436  ansible-playbook -i inv play1
+  437  vi play2
+  438  ls -ltr
+  439  more Lab1 
+  440  vi play2
+  441  ansible-playbook -i inv play2
+  442  vi play3
+  443  ansible-playbook -i inv play3
+  444  vi play4
+  445  ansible-playbook -i inv play4
+  446  vi play4
+  447  ansible-playbook -i inv play4
+  448  vi play4
+  449  ansible-playbook -i inv play4
+  450  vi play5
+  451  more play5
+  452  ansible-playbook -i inv play5
+  453  ls -ltr
+  454  vi play5
+  455  more index.html 
+  456  ansible-playbook -i inv play5
+  457  ls -ltr
+  458  more Lab1
+  459  vi play6
+  460  ansible-playbook -i inv play6
+  461  vi play6
+  462  ansible-playbook -i inv play6
+  463  ls -ltr
+  464  cd ..
+  465  ls -ltr
+  466  cd Nagesh
+  467  ls -ltr
+  468  vi play7
+  469  ansible-playbook -i inv play7
+  470  vi play7
+  471  ls -ltr
+  472  git add .
+  473  git commit -m "adding"
+  474  ls -ltr
+  475  cd ..
+  476  ls -ltr
+  477  cd Venkat-ansible
+  478  ls -ltr
+  479  more play7.yaml
+  480  more play8.yaml
+  481  ls -ltr
+  482  more playbook.yaml
+  483  cd
+  484  ls -ltr
+  485  cd Ansible-astrazeneca-June-2020/
+  486  ls -ltr
+  487  cd Nagesh/
+  488  cd ..
+  489  cd Madhu/
+  490  cd ..
+  491  cd rmathagi/
+  492  ls -ltr
+  493  cd day2assignment/
+  494  ls -ltr
+  495  more assignment8.yaml
+  496  more assignment9.yaml
+  497  cd
+  498  cd Ansible-astrazeneca-June-2020/
+  499  cd Nagesh
+  500  ls -ltr
+  501  pwd
+  502  vi play8.yaml
+  503  vi play8.yaml 
+  504  vi play8.yaml
+  505  ansible-playbook -i inv play8
+  506  ansible-playbook -i inv play8.yaml 
+  507  ls -ltr
+  508  cd ..
+  509  cd rmathagi/
+  510  ls -ltr
+  511  cd day2assignment/
+  512  ls -ltr
+  513  more assignment9.yaml
+  514  cd ..
+  515  cd Nagesh/
+  516  ls -ltr
+  517  more play3
+  518  more play4
+  519  more play6
+  520  more play5
+  521  vi play9.yaml
+  522  more play8.yaml 
+  523  vi play9.yaml
+  524  ls -ltr
+  525  mv play1 play1.yaml
+  526  mv play2 play2.yaml
+  527  mv play3 play3.yaml
+  528  mv play4 play4.yaml
+  529  mv play5 play5.yaml
+  530  mv play6 play6.yaml
+  531  mv play7 play7.yaml
+  532  ls -ltr
+  533  rm inventory.yaml inventory.ini inventory
+  534  ls -ltr
+  535  cd Lab2
+  536  ls -ltr
+  537  cd ..
+  538  rm -rf Lab2
+  539  ls -ltr
+  540  mkdir Day2
+  541  cp * Day2
+  542  cp -R * Day2
+  543  y
+  544  ls -ltr
+  545  cd Day2
+  546  ls -ltr
+  547  rm Lab1
+  548  ls -ltr
+  549  cd ..
+  550  ls -ltr
+  551  rm play*
+  552  ls -ltr
+  553  mkdir Day1
+  554  ls -ltr
+  555  mv Lab1 Day1
+  556  ls -ltr
+  557  rm play1.yaml
+  558  mv inv Day2
+  559  ls -ltr
+  560  rm inv index.html
+  561  ls -ltr
+  562  cd ..
+  563  cd rajesh
+  564  ls -ltr
+  565  more temp
+  566  more 1.yaml
+  567  more 2.yaml
+  568  cd ..
+  569  ls -ltr
+  570  cd Nagesh
+  571  ls -ltr
+  572  cd Day2
+  573  ls -ltr
+  574  more play5.yaml 
+  575  more play4
+  576  more play9.yaml 
+  577  ls -ltr
+  578  more inv
+  579  ls
+  580  cd Ansible-astrazeneca-June-2020
+  581  ls
+  582  cd Gurusaligram
+  583  ls
+  584  vi inventory
+  585  more inventory
+  586  ansible all -i inventory -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem -b
+  587  vi remote.pem
+  588  ansible all -i inventory -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem -b
+  589  ping 13.233.206.198
+  590  chmod 600 remoe.pem
+  591  ansible all -i inventory -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem -b
+  592  chmod 600 remote.pem
+  593  ansible all -i inventory -m yum -a"name=httpd state=present" -u ec2-user --key-file=remote.pem -b
+  594  ansible all -i inventory -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=remote.pem -b
+  595  vi index.html
+  596  more index.html
+  597  ansible all -i inventory -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=remote.pem -b
+  598  nsible all -i inventory -m service -a"name=httpd state=started" -u ec2-user --key-file=remote.pem -b
+  599  ansible all -i inventory -m service -a"name=httpd state=started" -u ec2-user --key-file=remote.pem -b
+  600  vi inventory 
+  601  more inventory 
+  602  ansible web,app -i inventory -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=remote.pem -b
+  603  vi index.html 
+  604  ansible web,app -i inventory -m copy -a"src=index.html dest=/var/www/html" -u ec2-user --key-file=remote.pem -b
+  605  vi inventory 
+  606  ansible web,app -i inventory -m copy -a"src=index.html dest=/var/www/html"
+  607  vi inventory 
+  608  ansible web,app -i inventory -m copy -a"src=index.ht
+  609  ansible all -i inventory -m copy -a"src=index.html dest=/var/www/html"
+  610  vi inv.ini
+  611  ansible-inventory -i inv.ini -y --list > inventory
+  612  more inventory 
+  613  ansible-inventory -i inv.ini -y --list > inventory.yml
+  614  more inventory
+  615  vi demo.yaml
+  616  ansible-playbook -i demo.yaml 
+  617  ansible-playbook demo.yaml 
+  618  vi demo.yaml 
+  619  ansible-playbook demo.yaml 
+  620  ansible-playbook -i inv demo.yaml 
+  621  vi demo1
+  622  mv demo1 demo1.yaml
+  623  ls
+  624  ansible-playbook demo1.yaml --syntax-check
+  625  ansible-playbook demo1.yaml
+  626  vi demo3.yaml
+  627  ansible-playbook demo3.yaml --syntax-check
+  628  ansible-playbook demo3.yaml
+  629  vi demo4.yaml
+  630  ansible-playbook demo4.yaml --syntax-check
+  631  vi demo4.yaml 
+  632  ansible-playbook demo4.yaml --syntax-check
+  633  ansible-playbook demo4.yaml
+  634  more inventory
+  635  vi inventory
+  636  vi demo5.html
+  637  ansible-playbook demo5.yaml --syntax-check
+  638  ls
+  639  mv demo5.html demo5.yaml
+  640  ansible-playbook demo5.yaml --syntax-check
+  641  vi demo5.yaml 
+  642  ansible-playbook demo5.yaml --syntax-check
+  643  vi demo7.yaml
+  644  ansible-playbook demo7.yaml --syntax-check
+  645  ansible-playbook demo7.yaml
+  646  vi demo8.yaml
+  647  ansible-playbook demo8.yaml --syntax-check
+  648  vi demo8.yaml 
+  649  ansible-playbook demo8.yaml --syntax-check
+  650  vi demo8.yaml 
+  651  ansible-playbook demo8.yaml --syntax-check
+  652  ansible-playbook demo8.yaml -v
+  653  ansible-playbook demo7.yaml -vv
+  654  ansible-playbook demo7.yaml -v
+  655  history
+  656  ls
+  657  cd ..
+  658  ls
+  659  cd Gurusaligram
+  660  ls
+  661  mv demo1.yaml demo2.yaml
+  662  ls
+  663  mv demo.yaml demo1.yaml
+  664  ls
+  665  vi demo5.yaml 
+  666  ansible-playbook demo5.yaml --syntax-check
+  667  ansible-playbook demo5.yaml
+  668  ls
+  669  ansible-playbook demo8.yaml --syntax-check
+  670  vi demo8.yaml 
+  671  ansible-playbook demo8.yaml --syntax-check
+  672  vi demo8.yaml 
+  673  ansible-playbook demo8.yaml --syntax-check
+  674  vi demo8.yaml 
+  675  ansible-playbook demo8.yaml
+  676  more inventory
+  677  ansible-playbook -i inventory demo8.yaml
+  678  vi inventory
+  679  ansible-playbook -i inventory demo8.yaml
+  680  more demo8.yaml 
+  681  more demo7.yaml 
+  682  ansible-playbook -i inventory demo7.yaml
+  683  vi demo7.yam
+  684  vi demo7.yaml
+  685  ansible-playbook -i inventory demo7.yaml
+  686  ansible-playbook -i inventory demo8.yaml
+  687  vi demo7.yaml
+  688  ansible-playbook -i inventory demo7.yaml
+  689  vi demo7.yaml
+  690  ansible-playbook -i inventory demo7.yaml
+  691  ansible-playbook -i inventory demo8.yaml
+  692  vi demo7.html
+  693  ansible-playbook -i inventory demo7.yaml
+  694  ansible-playbook -i inventory demo7.yaml --syntax-check
+  695  ls
+  696  vi demo9.yaml
+  697  ansible-playbook -i inventory demo9.yaml --syntax-check
+  698  ansible-playbook -i inventory demo9.yaml
+  699  ls
+  700  rm demo7.html 
+  701  ls
+  702  cd /root/Ansible-astrazeneca-June-2020
+  703  ls -lrt
+  704  cat rmathagi/day1assignment.txt 
+  705  ssh ec2-user@15.206.170.33
+  706  ifconfig
+  707  ssh ec2-user@15.206.170.33
+  708  ls -lrt
+  709  cd rmathagi/
+  710  ls -rlt
+  711  mkdir -m 755 day2assignment
+  712  git status
+  713  pwd
+  714  git statu
+  715  git status
+  716  cat ../singaravelan1/inventory
+  717  cat ../singaravelan1/mysql.yaml 
+  718  cat ../Balaji/day2task.yaml
+  719  git status
+  720  ls -;rt
+  721  ls -lrt
+  722  cd day2assignment/
+  723  vi inventory.ini
+  724  cat ../day1assignment.txt 
+  725  vi assignment9.yaml
+  726  ls -lrt
+  727  ansible -i inventory.ini assignment9.yaml 
+  728  ls -lrt
+  729  cat inventory.ini 
+  730  ansible gog -i inventory.ini assignment9.yaml 
+  731  vi assignment9.yaml 
+  732  ansible-playbook -i inventory.ini assignment9.yaml 
+  733  vi assignment9.yaml 
+  734  ansible-playbook -i inventory.ini assignment9.yaml 
+  735  vi inventory.ini 
+  736  cat assignment9.yaml 
+  737  vi inventory.ini 
+  738  ansible-playbook -i inventory.ini assignment9.yaml 
+  739  vi ansible.pem
+  740  chmod 400 ansible.pem 
+  741  vi inventory.ini 
+  742  ansible-playbook -i inventory.ini assignment9.yaml 
+  743  ls -lrt
+  744  git status
+  745  pwd
+  746  ls -lrt
+  747  git add assignment9.yaml inventory.ini
+  748  git commit -m "day2assignment"
+  749  git status
+  750  ls -lrt
+  751  cat assignment9.yaml 
+  752  cat inventory.ini 
+  753  ls -lrt
+  754  cp assignment9.yaml assignment1.yaml
+  755  cp assignment9.yaml assignment2.yaml
+  756  cp assignment9.yaml assignment3.yaml
+  757  cp assignment9.yaml assignment4.yaml
+  758  cp assignment9.yaml assignment5.yaml
+  759  cp assignment9.yaml assignment6.yaml
+  760  cp assignment9.yaml assignment7.yaml
+  761  cp assignment9.yaml assignment8.yaml
+  762  vi assignment1.yaml 
+  763  vi assignment2.yaml 
+  764  vi assignment3.yaml 
+  765  vi assignment4.yaml 
+  766  vi assignment5.yaml 
+  767  vi assignment6.yaml 
+  768  vi assignment7.yaml 
+  769  vi assignment8.yaml 
+  770  cat inventory.ini 
+  771  cat assignment9.yaml 
+  772  cd /root//Ansible-astrazeneca-June-2020/singaravelan1
+  773  ls -lrt
+  774  vi 1.yaml
+  775  ansible-playbook -i inventory1.yaml 1.yaml 
+  776  vi 2.yaml
+  777  ansible-playbook -i inventory1.yaml 2.yaml 
+  778  cp ../rajesh/template/httpd.conf.j2 .
+  779  ansible-playbook -i inventory1.yaml 2.yaml 
+  780  cp ../rajesh/template/index.html.j2 .
+  781  ansible-playbook -i inventory1.yaml 2.yaml 
+  782  ansible-playbook -i inventory1.yaml 2.yaml --syntax-check
+  783  ansible-playbook -i inventory1.yaml 2.yaml --check
+  784  vi 3.yaml
+  785  ansible-playbook -i inventory1.yaml 3.yaml
+  786  vi 3.yaml
+  787  ansible-playbook -i inventory1.yaml 3.yaml
+  788  vi 3.yaml
+  789  ansible-playbook -i inventory1.yaml 3.yaml
+  790  cd /root
+  791  ls ltr
+  792  ls -ltr
+  793  cd Ansible-astrazeneca-June-2020/
+  794  ls -ltr
+  795  cd Venkat-ansible/
+  796  ls -ltr
+  797  clear
+  798  vi inventory
+  799  cd ..
+  800  ls -ltr
+  801  cd Nagesh/
+  802  ls l-tr
+  803  ls -ltr
+  804  cat inv
+  805  cd ..
+  806  ls
+  807  cd singaravelan
+  808  ls
+  809  cd singaravelan
+  810  ls
+  811  pwd
+  812  cd rmathagi/
+  813  ls
+  814  cd ..
+  815  cd Suresh/
+  816  ls
+  817  cd ..
+  818  cd Venkat-ansible/
+  819  ls -ltr
+  820  cat inventory 
+  821  vi inv
+  822  cd ..
+  823  ls -ltr
+  824  cd Madhu/
+  825  s
+  826  ls
+  827  cd -
+  828  ls -ltr
+  829  cd Madhu/
+  830  ip a s
+  831  cd ..
+  832  ls -ltr
+  833  cd Venkat-ansible/
+  834  ls -ltr
+  835  cat inventory 
+  836  vi inv
+  837  ls -ltr
+  838  rm inventory 
+  839  ls -ltr
+  840  cat inv
+  841  clear
+  842  cd ..
+  843  ls -ltr
+  844  cd Nagesh/
+  845  ls
+  846  cp remote.pem ../Venkat-ansible/
+  847  ls -ltr
+  848  clear
+  849  cd ..
+  850  vi index.html
+  851  ls -ltr
+  852  cat index.html 
+  853  mv index.html Venkat-ansible/
+  854  l s-ltr
+  855  ls -ltr
+  856  clear
+  857  cd Venkat-ansible/
+  858  ls -ltr
+  859  ansible gog -i inv -m copy -a"src=index.html dest=/var/www/html"
+  860  ansible --version
+  861  clear
+  862  vi /etc/ansible/ansible.cfg 
+  863  ls -ltr
+  864  cd ..
+  865  l s-ltr
+  866  ls -ltr
+  867  cat Dhyanes/inventory.ini 
+  868  cd Nagesh/
+  869  ls -ltr
+  870  cat inv
+  871  cat inventory 
+  872  cd -
+  873  cd Venkat-ansible/
+  874  vi inv 
+  875  ansible gog -i inventory -m copy -a"src=index.html dest=/var/www/html"
+  876  ansible gog -i inv -m copy -a"src=index.html dest=/var/www/html"
+  877  file inv 
+  878  file inv
+  879  ansible gog -i inv -m copy -a"src=index.html dest=/var/www/html"
+  880  ansible gog -i inventory -m yum -a"name=httpd state=present" 
+  881  ansible gog -i inv -m yum -a"name=httpd state=present" 
+  882  ansible gog -i inv -m service -a"name=httpd state=started"
+  883  ansible gog -i inv -m yum -a"name=httpd state=present" 
+  884  ansible gog -i inv -m service -a"name=httpd state=started"
+  885  ansible gog -i inventory -m copy -a"src=index.html dest=/var/www/html"
+  886  ansible gog -i inv -m copy -a"src=index.html dest=/var/www/html"
+  887  l s-ltr
+  888  ls -ltr
+  889  mv inv inventory
+  890  ls -ltr
+  891  cat inventory 
+  892  ansible-inventory -i inventory.ini -y --list > inventory.yaml 
+  893  ansible-inventory -i inventory -y --list > inventory.yaml 
+  894  l s-ltr
+  895  ls -ltr
+  896  cat inventory.yaml 
+  897  file inventory
+  898  file inventory.yaml 
+  899  vi inv.ini
+  900  ansible-inventory -i inv.ini -y --list > inv.yaml 
+  901  cat inv.yaml
+  902  cat inventory
+  903  cat inv.yaml 
+  904  pwd
+  905  ls -ltr
+  906  vi play1.yaml
+  907  vi play.yaml
+  908  pwd
+  909  ls -ltr
+  910  vi inventory.yaml
+  911  vi inventory
+  912  ansible-playbook -i inventory 
+  913  ls -ltr
+  914  mv play.yaml play1.yaml
+  915  ansible-playbook -i inventory play1.yaml 
+  916  vi play2.yaml
+  917  ansible-playbook -i inventory play2.yaml 
+  918  vi play3.yaml
+  919  ansible-playbook -i inventory play3.yaml 
+  920  cat play3
+  921  cat play3.yaml 
+  922  vi play3.yaml
+  923  ansible-playbook -i inventory play3.yaml 
+  924  vi play4.yaml
+  925  ansible-playbook -i inventory play4.yaml
+  926  vi play5.yaml
+  927  ansible-playbook -i inventory play5.yaml
+  928  vi play6.yaml
+  929  cat play3.yaml 
+  930  ls
+  931  vi play7.yaml
+  932  ansible-playbook -i inventory play7.yaml
+  933  vi play8.yaml
+  934  ansible-playbook -i inventory play8.yaml
+  935  cat play1.yaml 
+  936  cat play2.yaml 
+  937  cat play3.yaml 
+  938  cat play4.yaml 
+  939  cat play5.yaml 
+  940  cat play6.yaml 
+  941  cat play7.yaml 
+  942  vi playbook.yaml
+  943  ls -ltr
+  944  cd root/Ansible-astrazeneca-June-2020/Suresh/
+  945  pwd
+  946  ls
+  947  vi debug.yaml
+  948  more inv
+  949  ansible-playbook -i inv debug.yaml 
+  950  more index.html 
+  951  vi index.html 
+  952  ansible-playbook -i inv debug.yaml 
+  953  vi debug.yaml
+  954  ansible-playbook -i inv debug.yaml 
+  955  vi debug.yaml 
+  956  ansible-playbook -i inv debug.yaml 
+  957  vi debug.yaml 
+  958  ansible-playbook -i inv debug.yaml 
+  959  vi debug.yaml 
+  960  ansible-playbook -i inv debug.yaml 
+  961  more /etc/resolv.conf
+  962  cd ls
+  963  ls
+  964  cd ..
+  965  cd,,
+  966  cd ..
+  967  ls
+  968  cd ..
+  969  pw
+  970  pwd
+  971  cd etc
+  972  httpd/conf
+  973  ls
+  974  cd httpd/
+  975  cd conf
+  976  more httpd.conf 
+  977  cd \
+  978  ls
+  979  cd ans
+  980  cd Ansible-astrazeneca-June-2020/
+  981  cd Suresh/
+  982  cp /etc/httpd/conf/httpd.conf ./
+  983  ls
+  984  mv httpd.conf httpd.conf.j2
+  985  ls
+  986  vi httpd.conf.j2 
+  987  more debug.yaml
+  988  vi debug.yaml 
+  989  ansible-playbook -i inv debug.yaml 
+  990  ls
+  991  mv index.html index.html.j2
+  992  ls
+  993  cp index.html index.html.ji2
+  994  cp index.html index.html.j2
+  995  cp index.html ./
+  996  more index.html.j2 
+  997  ansible-playbook -i inv debug.yaml 
+  998  ls
+  999  cd Ansible-astrazeneca-June-2020/
+ 1000  ls
+ 1001  git
+ 1002  git clone https://github.com/devopsschool-training-notes/Ansible-astrazeneca-June-2020.git
+ 1003  ls
+ 1004  cd Ansible-astrazeneca-June-2020/
+ 1005  ls
+ 1006  cd BabuSrinivasan/
+ 1007  ls
+ 1008  vi test1.yaml
+ 1009  ls
+ 1010  chmod 600 test1.yaml 
+ 1011  ls
+ 1012  cd ..
+ 1013  cd RajeshSelvaraj 
+ 1014  cd ..
+ 1015  cd rajesh
+ 1016  ls
+ 1017  cp * /BabuSrinivasan/
+ 1018  lls
+ 1019  ls
+ 1020  cp
+ 1021  cp -h
+ 1022  cp --help
+ 1023  cp -R /rajesh /BabuSrinivasan
+ 1024  ls
+ 1025  cp 
+ 1026  cp 1.yaml  Day1Questons.txt  index.html  inv  inventory  james  mysql-community.repo  mysql.yaml  play.yaml  remote.pem  temp  template  var
+ 1027  cd ..
+ 1028  cp /rajesh /1.yaml  Day1Questons.txt  index.html  inv  inventory  james  mysql-community.repo  mysql.yaml  play.yaml  remote.pem  temp  template  var
+ 1029  cd Ansible-astrazeneca-June-2020/
+ 1030  cd BabuSrinivasan/
+ 1031  ls
+ 1032  cd ..
+ 1033  git pull origin master
+ 1034  ls
+ 1035  cd BabuSrinivasan/
+ 1036  ls
+ 1037  vi tes1.yaml
+ 1038  ansible-playbook -i tes1.yaml
+ 1039  ansible-playbook -i test1.yaml
+ 1040  ls
+ 1041  ansible-playbook -i tes1.yaml
+ 1042  cat tes1.yaml 
+ 1043  ansible-playbook all -i tes1.yaml
+ 1044  ansible-playbook localhost -i tes1.yaml
+ 1045  ls
+ 1046  vi tes1.yaml 
+ 1047  ansible-playbook localhosts -i tes1.yaml
+ 1048  ansible-playbook all -i tes1.yaml
+ 1049  chmod 600 tes1.yaml 
+ 1050  ansible-playbook all -i tes1.yaml
+ 1051  ansible-playbook all  tes1.yaml
+ 1052  ansible-playbook tes1.yaml
+ 1053  ansible-playbook all tes1.yaml
+ 1054  ansible-playbook - all tes1.yaml
+ 1055  ansible-playbook tes1.yaml
+ 1056  ansible-playbook localhost tes1.yaml
+ 1057  ansible-playbook localhosts tes1.yaml
+ 1058  vi tes1.yaml 
+ 1059  ansible-playbook localhost tes1.yaml
+ 1060  ansible-playbook tes1.yaml
+ 1061  vi tes1.yaml 
+ 1062  ansible-playbook tes1.yaml
+ 1063  vi tes1.yaml 
+ 1064  ansible-playbook tes1.yaml
+ 1065  vi tes1.yaml 
+ 1066  ansible-playbook tes1.yaml
+ 1067  vi tes1.yaml 
+ 1068  ls
+ 1069  chmod 1.yaml 
+ 1070  chmod 600 1.yaml 
+ 1071  chmod 600 index.html 
+ 1072  chmod 600 inv
+ 1073  chmod 600 inventory 
+ 1074  cd template
+ 1075  ls
+ 1076  chmod 600 httpd.conf.j2 
+ 1077  chmod 600 index.html
+ 1078  chmod 600 index.html.j2 
+ 1079  ansible-playbook tes1.yaml
+ 1080  cd ..
+ 1081  ansible-playbook tes1.yaml
+ 1082  cd template
+ 1083  ls
+ 1084  cat 1.yaml 
+ 1085  ls
+ 1086  ls -l
+ 1087  ls
+ 1088  cd ..
+ 1089  cd var
+ 1090  ls
+ 1091  cd ..
+ 1092  ls
+ 1093  cd Gurusaligram/
+ 1094  ls
+ 1095  cd AVLEp1/
+ 1096  ls
+ 1097  cat assignment1 
+ 1098  cd ..
+ 1099  cd Kannan/
+ 1100  ls
+ 1101  cd Day-
+ 1102  cd Day-3
+ 1103  ls
+ 1104  cd AVLEp
+ 1105  cd AVLEp1
+ 1106  ls
+ 1107  cd ..
+ 1108  cd AVLEp2
+ 1109  ls
+ 1110  cd ..
+ 1111  AVLEp3
+ 1112  ls
+ 1113  cd AVLEp3
+ 1114  ls
+ 1115  cd ..
+ 1116  cd BabuSrinivasan/
+ 1117  mkdr AILEp1
+ 1118  mkdir AILEp1
+ 1119  mkdir AILEp2
+ 1120  mkdir AILEp3
+ 1121  ls
+ 1122  history
+ 1123  clear
+ 1124  cd AILEp1
+ 1125  ls
+ 1126  vi test1.yaml
+ 1127  cat test1.yaml 
+ 1128  vi test1.yaml
+ 1129  history
+ 1130  cd ..
+ 1131  history > 1.txt

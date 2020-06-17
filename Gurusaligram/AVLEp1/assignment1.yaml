@@ -1,0 +1,12 @@
+---
+- name: This sets up an httpd webserver
+  hosts: all
+  tasks:
+   - name: Install the httpd apps
+     yum:
+      name: "{{ package }}"
+      state: present
+   - name: start the httpd service
+     service:
+      name: "{{ server }}"
+      state: restarted

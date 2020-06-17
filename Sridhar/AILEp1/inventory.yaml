@@ -1,0 +1,11 @@
+all:
+  children:
+    ungrouped:
+      hosts:
+        '&': {}
+        bar.example.com: {}
+        foo.example.com: {}
+        mail.example.com: {}
+        one.example.com: {}
+        three.example.com: {}
+        two.example.com: {}

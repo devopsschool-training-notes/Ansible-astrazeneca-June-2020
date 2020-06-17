@@ -1,0 +1,22 @@
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  vars_prompt:
+    - name: "myname"
+      prompt: "What is your name"
+    - name: "age"
+      prompt: "What is your age"
+    - name: "port"
+      prompt: "What is your port"
+
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: present 
+  - debug:
+      msg: My Name is {{ myname }} 
+  - debug:      
+      msg: My Age is {{ age }}
+  - debug:
+      msg: My port is {{ port }}
