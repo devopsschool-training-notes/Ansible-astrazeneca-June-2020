@@ -1,0 +1,34 @@
+---
+- import_tasks: adoptopenjdk.yml
+
+- name: write environment config
+  include_tasks: write-environment-config.yml
+  when: java_is_default_installation
+
+# Set Java facts
+- name: create Ansible facts.d directory
+  become: yes
+  file:
+    state: directory
+    dest: /etc/ansible/facts.d
+    owner: root
+    group: root
+    mode: 'u=rwx,go=rx'
+
+- name: install Java facts
+  become: yes
+  template:
+    src: facts.j2
+    dest: '/etc/ansible/facts.d/{{ java_fact_group_name }}.fact'
+    owner: root
+    group: root
+    mode: 'u=rw,go=r'
+
+- name: re-read facts
+  setup:
+    filter: ansible_local
+
+- name: clear facts
+  set_fact:
+    java_redis_sha256sum:
+    java_redis_filename:

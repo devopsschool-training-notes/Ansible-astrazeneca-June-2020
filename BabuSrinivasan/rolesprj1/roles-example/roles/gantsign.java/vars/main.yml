@@ -1,0 +1,24 @@
+---
+# Java Major version number
+java_major_version: "{{ java_version | regex_replace('^(?:jdk-?)?([0-9]+).*', '\\1') }}"
+
+# Java AdoptOpenJDK release
+java_release: "{{ (java_version in ('8', '9', '10', '11', '12', '13', '14')) | ternary('latest', java_version) }}"
+
+# Java Full version number
+java_full_version: '{{ java_version }}'
+
+# The root folder of this Java installation
+java_home: "{{ java_install_dir }}/{{ java_full_version | regex_replace('^(jdk-?[0-9]+([u\\.][0-9]+)*).*', '\\1') }}{{ (java_implementation == 'hotspot') | ternary('', '-' + java_implementation) }}"
+
+# The URL for the AdoptOpenJDK API request
+java_api_request: 'https://api.adoptopenjdk.net/v2/info/releases/openjdk{{ java_major_version }}?openjdk_impl={{ java_implementation }}&os={{ java_os }}&arch={{ java_arch }}&release={{ java_release | urlencode }}&type=jdk&heap_size={{ java_heap_size }}'
+
+# Operating System
+java_os: linux
+
+# Architecture
+java_arch: x64
+
+# Heap size
+java_heap_size: normal
