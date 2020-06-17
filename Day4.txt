@@ -109,6 +109,57 @@ Lakshminarayanan	13.232.235.8
 James	13.232.183.33
 Babu Srinivasan	13.126.228.67
 Sridhar Sekar	35.154.240.22
+===========================================
+Ansible with Windows
+---------------------------
+Humen ---> ACS ----> ARS
+
+	
+	LINUX		WINDOWS
+	64BIT		ANY
+			- DOTNET 4.X+
+			- Powershell 3.X+
+	WINRM		- WINRM 
+			---------------
+			2016+++
+			2010, 2007, 
+	PROTOCOL 	HTTP/HTTPS
+============================================================
+Step 1 - Setup ACS with Windows Support	- DONE
+https://www.devopsschool.com/tutorial/ansible/ansible-windows-control-setup.html
+
+
+Step 2 - Setup ARS for Ansible Support	- DONE
+35.154.52.160
+https://www.devopsschool.com/tutorial/ansible/ansible-windows-remote-setup.html
+Public DNS	ec2-35-154-52-160.ap-south-1.compute.amazonaws.com
+User name	Administrator
+Password	
+?cFN$=Xvho?FL;2LoGGN%$RuXHclkAvq
+
+
+Step 3 - lets use it.
+
+SSH to winrm
+Windows...
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=?cFN$=Xvho?FL;2LoGGN%$RuXHclkAvq
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+
+
+
+
+==========
+Login to my ACS
+- 13.233.81.199
+
+Create a directory named with YOUR FIRST NAME
+
+Create a file inside it and with content "I love India"
 
 
 
@@ -124,6 +175,22 @@ Sridhar Sekar	35.154.240.22
 
 
 
+
+
+
+
+
+
+
+
+
+
+Option 1 - Ansible with Windows - 3 Hours
+Option 2 - Tower - 1 h
+
+
+
+Ansible Vault
 
 ==========================
 - Ansible Roles
@@ -151,7 +218,50 @@ Interate through jinja......
 
 
 
+35.154.52.160	?cFN$=Xvho?FL;2LoGGN%$RuXHclkAvq
+13.233.99.99	atuxAPHszfLf(V$8;jvRDH=t.2%3p4f?
+13.127.244.41	RU(5.@NO8nu94KY!ox*BEwiLS(S?2sx.
+13.235.0.120	nWvWr2wt.NBqByq5(Toln9gaDWwBkWMv
+15.206.94.154	k;J;WCkHdaaQh;9;uyyyA7vbM.C3@h*n
+13.126.72.45	69tapv?lMI(AX&96W4tY&gCI@*Me**@(
+13.233.190.102	IQY2I2p7=;iNJIpwJNppwJ5dCTf4hTyB
+13.234.117.140	CS8S%PjSJURNnhm=)CzRUQvRk*yx)vfx
+13.232.37.136	oZGUfjvUq9D!ow;q*=a4zll!Ipd(8fic
+15.206.170.71	-4iUreFEgOL!piRMJreK@qsP@9uZPm%e
+13.233.23.31	ltP8nUkX%u!hq?!z!Cb)cJg$o93AD9-7
+13.127.107.156	H$o&m;7!6(3GLK%VaI$)qvb.BF=82d-4
+13.126.238.216	-PKeP9f&X!*!P-X(c%V5u3.HKlsqPTxz
+3.6.89.82	$JS5tX?y842GaxjhxRahlbYOi4UgWB8N	
+15.206.159.21	c;MpQLIj98Q%n3iZFUs5yi7FVb$9CST3
+13.127.224.86	@8HHcI-R=@TS.KqJA&97Hk2gk6og7%Y!
+13.233.186.114	A.M;$iQ8*cD3jGkJMGk.acH7zw;ZPpgG
+13.232.217.6	AIC4(L@vwELZNAuYpIJOhn7$OVXjZt;a
+15.206.167.232	6LqcqNf@CG*fUk$uVGhCHszeS.?jU.yN
+13.233.130.218	W3.bvcucKT=MCU.COV(VhV$tFy9E3zaE	
+13.232.187.117 hx4xTjBao!I$-7a;R2*yiAj?UDX;7JCC
 
+
+Madhuvanthiy Chandar	35.154.52.160	?cFN$=Xvho?FL;2LoGGN%$RuXHclkAvq
+Tamilselvan Rajapandian	13.233.99.99	atuxAPHszfLf(V$8;jvRDH=t.2%3p4f?
+singaravelan senthilkarasu	13.127.244.41	RU(5.@NO8nu94KY!ox*BEwiLS(S?2sx.
+Babu Selvam	13.235.0.120	nWvWr2wt.NBqByq5(Toln9gaDWwBkWMv
+Kannan Jayakumar	15.206.94.154	k;J;WCkHdaaQh;9;uyyyA7vbM.C3@h*n
+Dhyaneswaran K J	13.126.72.45	69tapv?lMI(AX&96W4tY&gCI@*Me**@(
+Rajsh Selvaraj	13.233.190.102	IQY2I2p7=;iNJIpwJNppwJ5dCTf4hTyB
+Nagesh kumar	13.234.117.140	CS8S%PjSJURNnhm=)CzRUQvRk*yx)vfx
+Guru Pandian	13.232.37.136	oZGUfjvUq9D!ow;q*=a4zll!Ipd(8fic
+Venkatesh Damodharan	15.206.170.71	-4iUreFEgOL!piRMJreK@qsP@9uZPm%e
+R Mathagi Arun	13.233.23.31	ltP8nUkX%u!hq?!z!Cb)cJg$o93AD9-7
+Balamurugan	13.127.107.156	H$o&m;7!6(3GLK%VaI$)qvb.BF=82d-4
+Balaji T R	13.126.238.216	-PKeP9f&X!*!P-X(c%V5u3.HKlsqPTxz
+mohit	3.6.89.82	$JS5tX?y842GaxjhxRahlbYOi4UgWB8N
+Sivashankar Murugan	15.206.159.21	c;MpQLIj98Q%n3iZFUs5yi7FVb$9CST3
+Surendhiran	13.127.224.86	@8HHcI-R=@TS.KqJA&97Hk2gk6og7%Y!
+Suresh Anandan	13.233.186.114	A.M;$iQ8*cD3jGkJMGk.acH7zw;ZPpgG
+Lakshminarayanan	13.232.217.6	AIC4(L@vwELZNAuYpIJOhn7$OVXjZt;a
+James	15.206.167.232	6LqcqNf@CG*fUk$uVGhCHszeS.?jU.yN
+Babu Srinivasan	13.233.130.218	W3.bvcucKT=MCU.COV(VhV$tFy9E3zaE
+Sridhar Sekar	13.232.187.117 hx4xTjBao!I$-7a;R2*yiAj?UDX;7JCC	
 
 
 
