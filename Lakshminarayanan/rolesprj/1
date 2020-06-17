@@ -1,0 +1,50 @@
+---
+  - name: Collect only facts returned by facter
+    setup:
+      gather_subset:
+        - '!all'
+        - '!any'
+        - facter
+
+  - name: Create the Group
+    group: 
+      name: deloitte
+      state: present
+  
+  - name: Create the User
+    user: 
+      name: deploy
+      groups: deloitte
+      state: present
+  
+  - name: Install additional packages
+    yum:
+     name: "{{ item }}"
+     state: present
+    with_items:
+      - git
+      - ntp
+      - vim
+
+  - name: Install the httpd 
+     yum: name={{ package }} state=present
+     when: ansible_os_family == "RedHat"
+
+  - name: start the httpd service
+    service: name={{ server }} state=started
+
+
+  - name: Copy a file to /var/www/html
+    template:
+      src: index.html
+      dest: /var/www/html/
+  
+  - name: Copy a httpd.j2 into /etc/httpd/conf/httpd.conf
+    template:
+      src: httpd.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - restart httpd
+ 
+...
+

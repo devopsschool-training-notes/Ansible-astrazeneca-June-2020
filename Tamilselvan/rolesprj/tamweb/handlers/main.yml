@@ -1,0 +1,8 @@
+---
+# handlers file for tamweb
+handlers:
+  - name: restart apache
+    service:
+      name: httpd
+      state: restarted
+

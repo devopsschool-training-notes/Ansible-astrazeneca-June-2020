@@ -1,0 +1,24 @@
+---
+ # tasks:
+  - name: Install the httpd apps
+    shell: cat < ../index.j2
+    yum: name={{ webservice }} state=present
+    when: ansible_os_family == "RHEL"
+  - name: start the httpd service
+    service: name={{ webservice }} state=started
+  - name: Create an user “deploy-user”  with group "Delloite"
+    user: name=deploy group=delloite state=present 
+  - name: Template a file to index.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html
+  - name: Template a file to httpd.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+
+    notify:
+      - THIS IS handlers -Start
+
+  - debug: msg="My Name is Madhu in RHEL"
+    when: ansible_os_family == "RHEL" 

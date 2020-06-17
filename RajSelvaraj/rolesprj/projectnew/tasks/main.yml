@@ -1,0 +1,23 @@
+---
+# tasks file for proj1
+  - name: Install the httpd server
+    yum: name={{ server }} state=present
+    when: ansible_os_family == "RedHat"
+  - name: start the httpd service
+    service: name={{ server }} state=started
+  - name: Template httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+  - name: Template index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - httpd_restart_handler
+  - name: This command will change the working directory to somedir/.
+    shell:
+      cmd: hostname
+    register: hostname
+
+

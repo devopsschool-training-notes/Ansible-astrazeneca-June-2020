@@ -1,0 +1,4 @@
+---
+# handlers file for proj1
+  - name: httpd_restart_handler
+    service: name=httpd state=restarted

@@ -1,0 +1,14 @@
+
+[linux]
+
+[windows]
+13.232.217.6
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=AIC4(L@vwELZNAuYpIJOhn7$OVXjZt;a
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+
+

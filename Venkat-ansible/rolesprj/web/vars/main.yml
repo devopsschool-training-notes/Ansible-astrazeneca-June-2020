@@ -1,0 +1,6 @@
+---
+# vars file for web
+     
+    myname: Venkat
+    service: httpd
+    port: 80

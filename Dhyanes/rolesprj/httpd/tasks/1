@@ -1,0 +1,32 @@
+---
+# tasks file for vars
+  - name: Copy a file to /var/www/html
+    template:
+      src: index.html
+      dest: /var/www/html/
+  
+  - name: Copy a httpd.j2 into /etc/httpd/conf/httpd.conf
+    template:
+      src: httpd.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - restart apache
+  
+  - name: Install the httpd apps
+    yum: name={{ package }}
+    when: ansible_os_family == "RedHat"
+  
+  - name: start the httpd service
+    service: name={{ service }} state=started
+  
+  - name: create a empty fle
+    file: 
+      dest: /opt/test.txt 
+      state: touch
+  
+  - name: copy a file
+    copy:
+      dest: /var/www/html/
+      src: /root/kannan.txt
+...
+

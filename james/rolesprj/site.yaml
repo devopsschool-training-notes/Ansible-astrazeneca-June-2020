@@ -1,0 +1,7 @@
+- name: This sets up an httpd webserver
+  hosts: web
+
+  roles:
+  - project
+#  - geerlingguy.java
+#  - app

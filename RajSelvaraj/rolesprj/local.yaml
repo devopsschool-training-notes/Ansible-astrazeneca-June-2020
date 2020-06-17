@@ -1,0 +1,13 @@
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars:
+    server: httpd
+  vars_files:
+    - "varfile.yaml"
+
+  tasks:
+  - name: Install the httpd server
+    yum: name={{ server }} state=present
+  - debug:
+      msg: Source {{ source }}

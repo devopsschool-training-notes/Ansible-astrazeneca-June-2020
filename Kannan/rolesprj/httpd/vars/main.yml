@@ -1,0 +1,5 @@
+---
+# vars file for httpd
+package: "httpd"
+service: "httpd"
+port: "8080" 

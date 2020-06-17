@@ -1,0 +1,65 @@
+# tasks file for web
+  - name: Collect only facts returned by facter
+    setup:
+      gather_subset:
+        - '!all'
+        - '!any'
+        - facter
+  - name: Ansible register variable basic example
+    shell: "find *.txt"
+    args:
+      chdir: /home/ec2-user
+    register: find_output
+
+  - debug:
+      var: find_output
+  - name: Install the httpd apps
+    yum: name={{ webservice }} state=present
+    when: ansible_os_family == "RedHat"
+  - name: Install the httpd apps
+    yum: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+  - name: start the httpd service
+    service: name={{ webservice }} state=started
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart
+  - name: start the httpd service
+    service: name={{ webservice }} state=started
+  - name: create a empty fle
+    file: dest=/opt/{{ age }}.txt state=touch
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+  - name: "shut down Debian flavored systems"
+    command: /sbin/shutdown -t now
+    when: ansible_os_family == "Debian"
+  - debug:
+      msg: My Name is Guru in RHEL
+    when: ansible_os_family == "RedHat"
+  - debug:
+      msg: My Name is Guru in UBUNTU
+    when: ansible_os_family == "Debian"
+  - name: Installing .....
+    yum: name={{item}} state=present
+    with_items:
+     - ntp
+     - git
+     - vim
+  - name: Ensure group "deloitte" exists
+    group:
+      name: deloitte
+      state: present
+  - name: Adding user and adding to Group Deploy
+    user:
+      name: deploy
+      state: present
+      group: deloitte
+      shell: /bin/bash
+

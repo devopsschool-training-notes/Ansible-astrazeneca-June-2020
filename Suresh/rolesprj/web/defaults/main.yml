@@ -1,0 +1,6 @@
+---
+# defaults file for web
+
+    myname: suresh
+    age: 23
+    port: 80

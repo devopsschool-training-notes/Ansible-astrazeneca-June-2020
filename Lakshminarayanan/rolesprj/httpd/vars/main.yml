@@ -1,0 +1,6 @@
+---
+# vars file for httpd
+  name: Install webserver
+  package: httpd
+  server: httpd
+  port: 8080 

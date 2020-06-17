@@ -1,0 +1,9 @@
+---
+# tasks file for tamweb
+- name: install httpd
+  hosts: web
+  become: True
+  tasks:
+    - yum:
+        name: "{{tamvar}}" 
+        state: present

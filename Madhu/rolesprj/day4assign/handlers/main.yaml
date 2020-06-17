@@ -1,0 +1,4 @@
+---
+#handlers:
+  - name: THIS IS handlers - restart
+    service: name=httpd state=present

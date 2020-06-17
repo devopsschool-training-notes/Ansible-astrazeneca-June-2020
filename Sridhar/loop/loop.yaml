@@ -1,0 +1,10 @@
+- name: This sets up an httpd webserver
+  hosts: localhost
+
+  tasks:
+  - debug:
+      msg: My Name is Sridhar in RHEL
+  - command: echo {{ item }}
+    loop: [ 0, 2, 4, 6, 8, 10 ]
+    when: item > 5
+

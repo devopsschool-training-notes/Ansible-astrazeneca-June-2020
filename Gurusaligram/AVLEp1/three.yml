@@ -1,0 +1,5 @@
+---
+- hosts: localhosts
+  
+  tasks:
+   - service: name=httpd enabled=yes

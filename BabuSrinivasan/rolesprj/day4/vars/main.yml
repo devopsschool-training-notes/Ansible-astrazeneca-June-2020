@@ -1,0 +1,8 @@
+---
+# vars file for web
+
+    myname: Babu_in_rolevars
+    age: 25
+    port: 80
+    webservice: httpd
+

@@ -1,0 +1,7 @@
+---
+# vars file for web
+
+    myname: James Rai
+    age: 25
+    port: 8080
+    webservice: httpd

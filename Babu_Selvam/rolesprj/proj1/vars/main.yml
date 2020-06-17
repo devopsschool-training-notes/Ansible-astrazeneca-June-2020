@@ -1,0 +1,5 @@
+---
+# vars file for proj1
+server: httpd
+myname: Babu
+port_number: 8080

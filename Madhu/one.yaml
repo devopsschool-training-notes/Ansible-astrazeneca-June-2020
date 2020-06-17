@@ -1,0 +1,15 @@
+  
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+  - name: Install the httpd apps
+    yum: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart

@@ -1,0 +1,3 @@
+- name: httpd_restart_handler
+    service: name={{ server }} state=restarted
+

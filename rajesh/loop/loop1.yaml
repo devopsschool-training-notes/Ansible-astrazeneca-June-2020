@@ -1,0 +1,14 @@
+- name: This sets up an httpd webserver
+  hosts: localhost
+
+  tasks:
+  - debug:
+      msg: My Name is Rajesh in RHEL
+  - command: echo {{ item }}
+    loop: [ 0, 2, 4, 6, 8, 10 ]
+    when: item > 5
+  - name: Install common software requirements
+    yum: pkg={{ item }} state=installed
+    with_items:
+     - git
+     - ntp

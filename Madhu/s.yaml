@@ -1,0 +1,5 @@
+- me: Create directory structure
+  win_file:
+    path: C:\az\Madhu
+    state: directory
+

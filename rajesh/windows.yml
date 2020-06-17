@@ -1,0 +1,4 @@
+- name: Create directory structure
+  win_file:
+    path: C:\az\Guru
+    state: directory

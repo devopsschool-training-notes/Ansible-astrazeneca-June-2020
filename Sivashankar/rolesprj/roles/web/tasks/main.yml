@@ -1,0 +1,39 @@
+---
+# tasks file for web
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+  - name: Ansible register variable basic example
+    shell: echo "Siva"
+    register: name.stdout_lines
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - THIS IS handlers - restart
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - THIS IS handlers - restart
+  - name: Add group deloitte
+    group:
+      name: deloitte
+      state: present
+  - name: Add user "Deploy-user"
+    user:
+      name: Deploy-user
+      group: deloitte
+  - name: Install common software requirements
+    yum: pkg={{ item }} state=installed
+    with_items:
+     - git
+     - ntp
+     - vim
+  
+
+ 

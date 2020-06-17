@@ -1,3 +1,16 @@
+
+[windows]
+
+13.137.241.215
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=?cFN$=Xvho?FL;2LoGGN%$RuXHclkAvq
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+
+
 [web]
 13.127.241.215 ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes
 

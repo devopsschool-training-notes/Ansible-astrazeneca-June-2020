@@ -1,2 +1,5 @@
----
+   vars:
+    myname: Guru
+    age: 42
+    office: AZ---
 # defaults file for guru

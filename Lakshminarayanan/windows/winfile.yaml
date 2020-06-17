@@ -1,0 +1,6 @@
+---
+- hosts: windows
+  tasks:
+   - win__file:
+      path: C:\az\Lakshminarayanan
+      state: directory

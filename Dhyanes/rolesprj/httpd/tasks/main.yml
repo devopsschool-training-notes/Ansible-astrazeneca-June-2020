@@ -1,0 +1,51 @@
+---
+# tasks file for web
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+  - name: Run a command and get the output
+    shell: cat /tmp/dhyanes.txt
+    register: dhyanes 
+    args:
+      executable: /bin/bash
+
+  - debug:
+      var: dhyanes
+
+  - name: Collect only facts returned by facter
+    setup:
+      gather_subset:
+        - '!all'
+        - '!any'
+        - facter
+ 
+  - name: Template a file to httpd.conf.j2
+    template:
+      src: httpd.conf.j2
+      dest: /etc/httpd/conf/httpd.conf
+    notify:
+      - restart httpd
+
+  - name: Template a file to index.html.j2
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+    notify:
+      - restart httpd
+  
+  - name: create group deloitte
+    group:
+      name: deloitte
+      state: present
+
+  - name: Add user "Deploy-user"
+    user:
+      name: Deploy-user
+      group: deloitte
+  
+  - name: Installing the packages
+    yum: name={{item}} state=present
+    with_items:
+     - ntp
+     - git
+     - vim

@@ -1,0 +1,13 @@
+---
+
+- name: Create directory structure
+  win_file:
+    path: C:\az\balaji
+   state: directory
+ 
+- name: Touch a file (creates if not present, updates modification time if present)
+  win_file:
+    path: C:\az\balaji\balaji.txt
+    state: touch
+...
+

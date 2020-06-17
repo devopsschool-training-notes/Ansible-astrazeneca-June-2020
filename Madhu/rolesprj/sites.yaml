@@ -1,0 +1,8 @@
+- name: This sets up an httpd webserver
+  hosts: web
+  
+  roles:
+    - day4assign
+  handlers:
+  - name: THIS IS handlers
+    service: name=httpd state=present

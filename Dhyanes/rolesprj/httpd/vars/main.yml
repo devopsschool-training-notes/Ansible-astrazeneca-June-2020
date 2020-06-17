@@ -1,0 +1,5 @@
+---
+# vars file for httpd
+
+    port: 80
+    myname: Dhyanes

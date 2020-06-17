@@ -1,0 +1,5 @@
+---
+  - name: Create directory structure
+    win_file:
+      path: C:\az\nagesh
+      state: directory

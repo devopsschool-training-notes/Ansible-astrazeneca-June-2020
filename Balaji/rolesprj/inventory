@@ -1,0 +1,23 @@
+[web]
+#13.232.108.187 ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes
+#15.206.178.95 ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes
+172-31-28-36 ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes
+[app]
+52.66.255.58 ansible_user=ec2-user
+
+[gof]
+web
+app
+
+[gog:children]
+web
+app
+
+[db]
+52.66.255.58 ansible_connection=paramiko
+52.66.255.52 ansible_user=root
+52.66.255.53 ansible_user=user1
+52.66.255.54 ansible_user=ec2-user ansible_ssh_pass=password ansible_become=yes
+52.66.255.55 ansible_user=ec2-user ansible_ssh_private_key_file=remote.pem ansible_become=yes ansible_become_pass=password
+db2	ansible_host=52.66.255.56
+db3.ddd.com ansible_port=23

@@ -1,0 +1,7 @@
+---
+- hosts: web
+  become: yes
+  gather_facts: yes
+  roles:
+#    - role: geerlingguy.java
+    - role: httpd

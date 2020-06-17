@@ -1,0 +1,57 @@
+---
+ 
+- name: Create the Group
+  group: 
+    name: deloitte
+    state: present
+  
+- name: Create the User
+  user: 
+    name: deploy
+    groups: deloitte
+    state: present
+  
+- name: Install additional packages
+  yum: name={{item}} state=present
+  with_items:
+   - git
+   - ntp
+   - vim
+   - httpd
+
+- name: Install the httpd apps
+  yum: name=httpd state=present
+  when: ansible_os_family == "RedHat"
+
+- name: Run a command and get the output
+  shell: cat /tmp/dhyanes.txt
+  register: dhyanes
+  args:
+   executable: /bin/bash
+
+- debug:
+   var: dhyanes
+
+- name: Collect only facts returned by facter
+  setup:
+   gather_subset:
+     - '!all'
+     - '!any'
+     - facter
+
+- name: Copy a file to /var/www/html
+  template:
+     src: index.html.j2
+     dest: /var/www/html/
+  notify:
+    - restart httpd
+  
+- name: Copy a httpd.j2 into /etc/httpd/conf/httpd.conf
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+  notify:
+   - restart httpd
+ 
+...
+

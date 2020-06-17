@@ -1,0 +1,15 @@
+---
+
+- hosts: windows
+
+  tasks:
+
+  - name: Copy File
+
+    win_copy:
+
+      src: C:/az
+
+      dest: C:/az/RajeshSelvaraj/
+
+      remote_src: yes

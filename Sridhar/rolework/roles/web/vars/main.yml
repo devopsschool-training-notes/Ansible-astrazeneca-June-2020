@@ -1,0 +1,6 @@
+---
+# vars file for web
+
+    myname: Sridhar Sekar
+    age: 35
+    port: 80

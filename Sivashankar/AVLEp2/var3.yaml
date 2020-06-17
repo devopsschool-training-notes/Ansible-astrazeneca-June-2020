@@ -1,0 +1,14 @@
+---
+- name: This sets up an httpd webserver
+  hosts: web
+  tasks:
+  - name: Install the httpd apps
+    yum: name=httpd state=present
+  - name: start the httpd service
+    service: name=httpd state=started
+  - name: Find afile with .txt
+    find: path=/root/Ansible-astrazeneca-June-2020/Sivashankar patterns='*.txt'
+    register: find_output
+  
+  - debug:
+      var: find_output 

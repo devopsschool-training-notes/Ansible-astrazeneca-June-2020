@@ -1,0 +1,6 @@
+---
+- name: install httpd_roles
+  hosts: web
+  
+  roles:
+    - day4

@@ -1,0 +1,11 @@
+---
+
+- name: Run a command under cmd
+  win_shell: mkdir C:\az\Sridhar
+  args:
+    executable: cmd.exe
+
+- name: Create directory structure
+   win_file:
+    path: C:\az\Sridhar\
+    state: directory

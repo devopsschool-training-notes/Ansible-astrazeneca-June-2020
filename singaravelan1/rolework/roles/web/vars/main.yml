@@ -1,0 +1,6 @@
+---
+# vars file for web
+
+    myname: Arajesh
+    age: 23
+    port: 80

@@ -1,0 +1,4 @@
+- name: Copy a single file
+  win_copy:
+    src: raj.txt
+    dest: C:\AZ\

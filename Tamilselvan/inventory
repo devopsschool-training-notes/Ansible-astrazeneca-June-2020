@@ -4,3 +4,15 @@
 
 [dev]
 13.233.206.198
+
+
+[windows]
+35.154.52.160
+
+
+[windows:vars]
+ansible_user=Administrator
+ansible_password=?cFN$=Xvho?FL;2LoGGN%$RuXHclkAvq
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore

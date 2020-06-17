@@ -1,0 +1,8 @@
+---
+# defaults file for day4
+
+    myname: Guru
+    age: 23
+    port: 80
+
+

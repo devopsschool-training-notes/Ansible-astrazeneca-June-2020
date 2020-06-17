@@ -1,0 +1,6 @@
+---
+- name: test
+  hosts: web
+  
+  roles:
+  - guru
