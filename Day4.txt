@@ -139,6 +139,7 @@ Password
 
 
 Step 3 - lets use it.
+https://www.devopsschool.com/blog/15-ansible-playbooks-example-for-windows-administration/
 
 SSH to winrm
 Windows...
@@ -263,14 +264,113 @@ James	15.206.167.232	6LqcqNf@CG*fUk$uVGhCHszeS.?jU.yN
 Babu Srinivasan	13.233.130.218	W3.bvcucKT=MCU.COV(VhV$tFy9E3zaE
 Sridhar Sekar	13.232.187.117 hx4xTjBao!I$-7a;R2*yiAj?UDX;7JCC	
 
+---------------------------
+Install Packages
+Start 
+Stop
+https://www.devopsschool.com/blog/15-ansible-playbooks-example-for-windows-administration/
+
+
+---
+- name: Installing Apache MSI
+  hosts: windows
+
+  tasks:
+    - name: Download the Apache installer
+      win_get_url:
+        url: https://archive.apache.org/dist/httpd/binaries/win32/httpd-2.2.25-win32-x86-no_ssl.msi
+        dest: C:\ansible_examples\httpd-2.2.25-win32-x86-no_ssl.msi
+
+    - name: Install MSI
+      win_package:
+        path: C:\ansible_examples\httpd-2.2.25-win32-x86-no_ssl.msi
+        state: present
+
+    - name: Stop service Tomcat
+      win_service:
+        name: bthserv
+        state: stopped
 
 
 
+MpsSvc
+
+ApacheHTTPServer
+
+
+---
+- hosts: win
+  tasks:
+   - name: Stop service Tomcat
+     win_service:
+       name: ApacheHTTPServer
+       state: started
+
+
+========================================================================
+========================================================================
+Ansible Vault
+-----------------------
+	- its tool
+	- to protect. KEY|CERT|Pass.....ENCRYPTE a file/string through PASSWORD.
+
+	- AES256
 
 
 
+ 1184  more inventory
+ 1185  clear
+ 1186  clear
+ 1187  ls
+ 1188  ansible-vault
+ 1189  ls
+ 1190  ansible-vault encrypt inventory
+ 1191  ls
+ 1192  clear
+ 1193  ls
+ 1194  more inventory
+ 1195  clear
+ 1196  ls
+ 1197  vi inventory
+ 1198  ansible-vault
+ 1199  ansible-vault decrypt inventory
+ 1200  ansible-vault decrypt inventory
+ 1201  more inventory
+ 1202  clear
+ 1203  ls
+ 1204  ansible-vault
+ 1205  ansible-vault create raju.chacha
+ 1206  ls
+ 1207  more raju.chacha
+ 1208  clear
+ 1209  ls
+ 1210  more inventory
+ 1211  clear
+ 1212  more raju.chacha
+ 1213  ansible-vault edit raju.chacha
+ 1214  more raju.chacha
+ 1215  clear
+ 1216  ls
+ 1217  ansible-vault view raju.chacha
+ 1218  ansible-vault
+ 1219  ansible-vault rekey raju.chacha
+ 1220  clear
+ 1221  ls
+ 1222  history
 
 
+ 1228  ansible-vault encrypt inventory
+ 1229  more inventory
+ 1230  clear
+ 1231  ls
+ 1232  ansible-playbook -i inventory win.yaml
+ 1233  clear
+ 1234  ansible-playbook -h
+ 1235  clear
+ 1236  ansible-playbook -i inventory win.yaml  --ask-vault-pass
+ 1237  more inventory
+ 1238  clear
+ 1239  ansible-playbook -i inventory win.yaml  --ask-vault-pass -vvvvv >> 11.txt
 
 
 
