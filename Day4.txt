@@ -1,0 +1,213 @@
+- register
+
+- hosts: localhost
+  tasks:
+  - name: Ansible register variable basic example
+    shell: "find *.txt"
+    args:
+      chdir: /tmp
+    register: find_output
+
+  - debug:
+      var: find_output
+
+-------------------------------------------
+ansible
+ansible-playbook
+ansible-config
+ansible-galaxy
+
+
+Location of the roles....
+	CURR_DIR
+	/etc/ansible/roles - SYSTEM	
+	$HOME/.ansible/roles
+--------------------------------------
+site.yaml
+	
+	tasks:
+	shell
+		ansible-galaxy install geerlingguy.java	
+
+	roles
+==============
+Iterators
+https://www.devopsschool.com/tutorial/ansible/ansible-looping-programming-playbooks.html
+
+YAML
+------------
+- name: Install common software requirements
+  apt: pkg={{ item }} state=installed
+  with_items:
+     - git
+     - htop
+     - vim
+
+
+   - command: echo {{ item }}
+      loop: [ 0, 2, 4, 6, 8, 10 ]
+      when: item > 5
+
+- name: This sets up an httpd webserver
+  hosts: localhost
+
+  tasks:
+  - debug:
+      msg: My Name is Rajesh in RHEL
+  - command: echo {{ item }}
+    loop: [ 0, 2, 4, 6, 8, 10 ]
+    when: item > 5
+  - name: Install common software requirements
+    yum: pkg={{ item }} state=installed
+    with_items:
+     - git
+     - ntp
+
+
+
+
+- command: echo {{ item }}
+  loop: "{{ mylist|default([]) }}"
+  when: item > 5
+
+- command: echo {{ item.key }}
+  loop: "{{ query('dict', mydict|default({})) }}"
+  when: item.value > 5
+
+PYTHON
+
+==========================================================
+PROJECT - Roles
+=================
+https://www.devopsschool.com/blog/ansible-role-project-1/
+Directory Name MUST BE - /root/Ansible-astrazeneca-June-2020/yourname/rolesprj
+
+ACS - 13.233.81.199
+ARS - 
+
+
+
+
+Madhuvanthiy Chandar	13.235.134.206
+Tamilselvan Rajapandian	13.235.246.154
+singaravelan senthilkarasu	13.233.99.57
+Babu Selvam	13.233.16.187
+Kannan Jayakumar	52.66.214.211
+Dhyaneswaran K J	35.154.128.247
+Rajsh Selvaraj	13.127.144.70
+Nagesh kumar	13.127.13.32
+Guru Pandian	13.127.235.41
+Venkatesh Damodharan	15.206.172.103
+R Mathagi Arun	15.206.94.190
+Balamurugan	13.234.116.89
+Balaji T R	13.232.6.15
+mohit	13.234.122.58
+Sivashankar Murugan	3.6.92.247
+Surendhiran	13.233.53.46
+Suresh Anandan	15.206.73.148
+Lakshminarayanan	13.232.235.8
+James	13.232.183.33
+Babu Srinivasan	13.126.228.67
+Sridhar Sekar	35.154.240.22
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==========================
+- Ansible Roles
+- Ansible galaxy
+- Iterrate throug list.
+- Ansible Tower - LEAST PRIORITY - 1HOUR	
+- Conditioning
+- Windows - 3 hours
+===================================================]
+
+How to reuse a code which has been written by some one else?
+	      -------
+	 	role
+	AWS 
+	- Azure
+	 - GC
+
+- Ansible Galaxy
+
+Interate through jinja......
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- DevOps@rajeshKumar.xyz
+
+- CI - With Ansible + Jenkins + Cloud
+
+
+{%- from "common/env/env.jinja" import zone with context -%}
+
+{%- set proxy =  salt['pillar.get'](
+                        'common:proxy:' + zone,
+                        pillar['common']['proxy']['default']
+                        ) -%}
+
+
+{## Determine the dc - first 4 letters of the hostname in lowercase ##}
+{% set dc = salt['grains.get']('nodename')[0:4]|lower %}
+
+{## Determine the country - first 2 letters of the DC ##}
+{% set country = dc[0:2] %}
+
+{## Determine the zone, e.g. emea based on mapping in regions pillar ##}
+{% set zone = pillar['common']['regions'][country] %}
+
+{## Determine the hosting - AWS, VM, etc. ##}
+{% set hosting = pillar['common']['hosting'][dc] %}
+
+
+{## Get the environment from grains if defined ##}
+{% set environment = salt['grains.get']('az:env:environment', False) %}
+
+{## Determine the environment from the hostname suffix or use a default ##}
+{% if not environment %}
+{% set envtmp = {} %}
+
+{% set suffixes = [
+        salt['grains.get']('nodename').rstrip('0123456789')[-3:]|lower,
+        salt['grains.get']('nodename').rstrip('0123456789')[-2:]|lower,
+        ]
+%}
+
+{% do envtmp.update({ 'value': pillar['common']['environments']['default'] }) %}
+
+{% for suffix in suffixes if salt['pillar.get']('common:environments:' 
