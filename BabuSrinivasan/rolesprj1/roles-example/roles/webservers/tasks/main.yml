@@ -1,0 +1,53 @@
+---
+# tasks file for webservers
+  - name: Install httpd
+    yum:
+       name: "{{package}}"
+       state: present
+    when: ansible_distribution == 'RHEL'
+  - name: Start httpd
+    service:
+       name: "{{service}}"
+       state: started
+       enabled: true
+  - name: Template a file to /etc/httpd/ports.conf
+    template:
+       src: ports.j2
+       dest: /etc/httpd/ports.conf
+    notify:
+       - restart httpd
+  - name: copy start.sh
+    copy:
+       src: start.sh
+       dest: /home/babu/
+       mode: preserve
+  - name: execute start.sh
+    shell: /home/babu/start.sh
+    register: scriptoutput
+  - name: Template a file to index.html
+    template:
+       src: index.j2
+       dest: /var/www/html/index.html
+
+  - name: Ensure group deploy exists
+    group:
+       name: deloitte
+       state: present
+
+  - name: Ensure user deploy-user exists
+    user:
+       name: deploy-user
+       state: present
+
+#  - name: install packages
+#    apt:
+#       name: "{{item}}"
+#       state: present
+#    with_items:
+#       - git
+#       - ntp
+#       - vim
+
+  - name: Ansible variables
+    debug:
+       msg: "{{myname}}"

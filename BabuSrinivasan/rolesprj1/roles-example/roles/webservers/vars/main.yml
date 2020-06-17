@@ -1,0 +1,5 @@
+---
+# vars file for webservers
+myname: "Babu in roles-vars-vars"
+package: "httpd"
+service: "httpd"

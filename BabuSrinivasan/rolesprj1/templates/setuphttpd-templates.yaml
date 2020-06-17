@@ -1,0 +1,27 @@
+- hosts: web1
+  gather_facts: no
+  tasks:
+  - name: Install httpd
+    yum:
+       name: "{{package}}"
+       state: present
+  - name: Start httpd
+    service:
+       name: "{{service}}"
+       state: started
+       enabled: true
+  - name: Template a file to /etc/httpd/ports.conf
+    template:
+       src: /home/ansible-yml/ports.j2
+       dest: /etc/httpd/ports.conf
+    notify:
+       - restart httpd
+  - name: Ansible variables
+    debug:
+       msg: "{{myname}}"
+  handlers:
+  - name: restart apache
+    service:
+       name: "{{service}}"
+       state: restarted
+    

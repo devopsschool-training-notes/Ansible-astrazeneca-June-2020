@@ -1,0 +1,4 @@
+myname: "Babu in gorup_vars-all"
+package: "httpd"
+service: "httpd"
+port: 8080

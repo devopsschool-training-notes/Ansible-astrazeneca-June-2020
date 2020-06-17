@@ -1,0 +1,6 @@
+---
+# handlers file for webservers
+  - name: restart httpd
+    service:
+       name: "{{service}}"
+       state: restarted
