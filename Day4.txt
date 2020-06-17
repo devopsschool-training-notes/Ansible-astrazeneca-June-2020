@@ -374,6 +374,75 @@ Ansible Vault
 
 
 
+======================================================
+======================================================
+Ansible Function
+Ansible Module		BIGGER
+Ansible .j2 custome
+Ansible Plugins
+	- lookups
+Ansible Tower		BIGEST
+remaining Modules
+Ansible Error Handling
+CI with Ansible
+Ansible with Cloud AWS - Dynamic inventory
+Ansible with Docker
+
+=============================================================
+4 Days - Ansible
+==========================
+CONS FOR ENTERPRISE
+--------------------------
+ORGANIZATION
+	ORG1
+		Admin
+		Playbooks
+		Inventory
+		Cred
+		Projects
+`	ORG2
+		Admin
+		Playbooks
+		Inventory
+		Cred
+		Projects
+
+- RBAC (Authentication & Authorization)
+	LDAP		Admin
+	USER|Pas	Power
+	OpenID		Dev
+			QA
+			Ops
+			View
+			Nothing
+- Reporting  ----> 
+- Notification  - Email
+- Visualization  - Dashabord
+- API Based ACCESS - 
+- Addons
+
+
+------------
+Ansible Tower
+	- GUI Based
+	- CMD + GUI
+	Release 
+		AWX - Free Version - MOST LATEST BUT - Not for Production.
+					- NO SUpport
+					- No big fixing.
+		Ansible Tower - FREE upto 10 NODES. More than 10 - its paid.
+	- DB - Postgress
+	- Webserver - nginx
+	- Queue - RabbitMQ
+	- Backend - Python
+- Install Tower -
+- Demo
+
+
+
+
+
+
 
 
 
@@ -396,7 +465,7 @@ Ansible Vault
 {% set dc = salt['grains.get']('nodename')[0:4]|lower %}
 
 {## Determine the country - first 2 letters of the DC ##}
-{% set country = dc[0:2] %}
+{% set country = dc[0:2] %}	
 
 {## Determine the zone, e.g. emea based on mapping in regions pillar ##}
 {% set zone = pillar['common']['regions'][country] %}
