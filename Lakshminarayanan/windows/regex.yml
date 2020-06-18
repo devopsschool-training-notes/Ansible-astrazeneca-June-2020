@@ -1,0 +1,12 @@
+---
+- hosts: windows
+  tasks:
+   - name: Creating a registry
+     win_regedit:
+      path: HKLM:\SOFTWARE\GeekFlare
+   
+   - name: Modifying a registry, adding name and data
+     win_regedit:
+      path: HKLM:\SOFTWARE\GeekFlare
+      name: Geek
+      data: Flare

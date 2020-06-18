@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+  - name: touch absent with no file
+    touch:
+      file: ./me.txt
+      state: absent

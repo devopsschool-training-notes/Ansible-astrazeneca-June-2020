@@ -1,6 +1,14 @@
 ---
 - hosts: windows
   tasks:
-   - win__file:
-      path: C:\az\Lakshminarayanan
+   - win_file:
+      path: C:\Lakshminarayanan
       state: directory
+
+   - name: Content in  File
+     win_lineinfile:
+      create: yes
+      line: "I Love India"
+      path: C:\\Lakshminarayanana\\Lakshmi.txt
+      state: present
+      remote_src: yes

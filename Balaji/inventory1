@@ -1,10 +1,10 @@
 [windows]
-35.154.52.160
+13.126.238.216
 
 
 [windows:vars]
 ansible_user=Administrator
-ansible_password=?cFN$=Xvho?FL;2LoGGN%$RuXHclkAvq
+ansible_password=-PKeP9f&X!*!P-X(c%V5u3.HKlsqPTxz
 ansible_connection=winrm
 ansible_winrm_transport=basic
 ansible_winrm_server_cert_validation=ignore

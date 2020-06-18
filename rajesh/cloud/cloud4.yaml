@@ -1,0 +1,17 @@
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars_files:
+    - vars.yaml
+
+  tasks:
+  - ec2:
+      key_name: rajesh-mumbai
+      instance_type: t2.small
+      image: ami-5b673c34
+      aws_access_key: "{{ key }}"
+      aws_secret_key: "{{ secret }}"
+      instance_tags:
+        Name: DEMO
+      vpc_subnet_id: subnet-8c19b3e5
+      region: ap-south-1

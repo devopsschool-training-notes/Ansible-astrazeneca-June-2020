@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  gather_facts: False
+  tasks:
+  - debug: msg="{{ lookup('env','HOME') }} is an environment variable"
+  - name:  Match 'Li' on the first column, return the second column (0 based index)
+    debug: msg="The atomic number of Lithium is {{ lookup('csvfile', 'Li file=elements.csv delimiter=,') }}"

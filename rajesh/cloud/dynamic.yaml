@@ -1,0 +1,10 @@
+---
+- name: This sets up an httpd webserver
+  hosts: all
+  vars_files:
+    - vars.yaml
+
+  tasks:
+
+  - debug:
+      msg: My Name is Rajesh

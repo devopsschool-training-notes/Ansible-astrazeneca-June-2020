@@ -1,0 +1,14 @@
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+
+  tasks:
+
+  - debug:
+      msg: My Name is Rajesh
+  - test_module:
+      appkey: 4c7c461579d29300a97c79e278b6bb02
+      treshold: 2
+  - test_module:
+      appkey: 4c7c461579d29300a97c79e278b6bb02
+      treshold: 6

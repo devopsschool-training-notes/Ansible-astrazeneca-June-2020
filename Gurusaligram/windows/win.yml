@@ -1,0 +1,14 @@
+---
+- name: Installing Apache MSI
+  hosts: windows
+
+  tasks:
+    - name: Download the Apache installer
+      win_get_url:
+        url: https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409
+        dest: C:\packages\StorageExplorer.exe
+
+    - name: Install MSI
+      win_package:
+        path: C:\packages\StorageExplorer.exe
+        state: present

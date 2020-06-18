@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  gather_facts: False
+  tasks:
+  - name: Creating my.cnf with respected resources
+    debug: 
+      msg: "Common Rounding of a number {{ 39.4 | round }}" #40
