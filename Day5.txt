@@ -1,0 +1,602 @@
+Ansible Tower Demo
+=============================
+Ubuntu
+Centos
+---------------------------------
+13.233.83.68
+
+https://13.233.83.68/#/login
+admin
+admin123
+
+
+Basic workflow with Ansible Tower
+========================================
+Step 1 - Set Authenticaton
+
+Step 2 - Create Org
+
+Step 3 - Set NOTIFICATION TEMPLATES
+		 - email
+
+Step 4 - Adding user and team under org.
+		Team 		User
+		-------------------------
+		admin
+		dev
+				rajesh
+		manager
+Step 5 - Set Rajesh as a Project Admin.
+
+Step 6 - Add ORG admin
+
+Step 7 - Add a all cred of ARS of your ORG.
+
+Step 8 - Add inventory - 13.233.81.199
+
+Step 9 - Create a project
+	https://github.com/devopsschool-demo-labs-projects/ansible-hello-world-role
+
+Step 10 - Create a template 
+	
+Step 11 - Run a template.
+
+Ansible-playbook -i inventory site.yaml -u=user -key==sddsa
+-----------------------------------------------------------
+		  DONEEEEEEEE  DONEEE	DONEEEEEEEEEEEEEEEE
+
+==========================================================================
+Ansible using Cloud
+===============================================================
+What do you want to do? Using Ansible ON CLOUD - 
+Which cloud? - AWS 3900 (Services)
+
+		create ec2
+
+http - host - port - Auth - API  - (GET|POST|PUT|DELETE) 
+		   FEATURE
+===============================================================
+ACCESS KEY
+SECRET KEY
+
+
+t2.small
+
+
+
+
+
+
+
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+
+  tasks:
+  - ec2:
+      key_name: rajesh-mumbai
+      instance_type: t2.small
+      image: ami-5b673c34
+      aws_access_key: 
+      aws_secret_key: 
+      instance_tags:
+        Name: DEMO
+      vpc_subnet_id: subnet-8c19b3e5
+      region: ap-south-1
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+
+  tasks:
+  - ec2:
+      key_name: rajesh-mumbai
+      instance_type: t2.small
+      image: ami-5b673c34
+      aws_access_key: 
+      aws_secret_key: 
+      instance_tags:
+        Name: DEMO
+      vpc_subnet_id: subnet-8c19b3e5
+      region: ap-south-1
+=====================================
+Approach 1 - AWS CLI Configure
+
+Approach 2 - AWS KMS
+
+Approach 3 - Ansible Vault and using vars
+
+Approach 4 - ACCESS CAn be in a INI or csv file and use lookup to feed
+
+Approach 5 - Ansible Vault and Strng encryption
+
+
+$ANSIBLE_VAULT;1.1;AES256
+          33656538353531366139383039316161633932353439363165613562333838303263356532663861
+          3765666235663232366331613563653365303261666139360a386639643639353466346163393935
+          66613539616663623732316433353637376135333133336634356634393130613861313762663261
+          6431346563383662640a316536343134646536623032376466633434356465333166623837653532
+          65303536346338313139346466656262333031636561656632326362613666653965
+
+$ANSIBLE_VAULT;1.1;AES256
+          34656338393436326331616265356661353462336330323234623335303765326365393634623932
+          6434396263323830343964336166343165633030633837360a356164636264386263316232336136
+          63356231326433316238376539626336643839313166666261346539323730323964343763653661
+          6662633864356534360a303139636230643633326136623364613062613431373630356535343930
+          38323133383033653262396637636636613264353235386262626133333032653833663531653738
+          6130623061316564613566333636313733343337393561326236
+
+
+
+[root@ip-172-31-17-140 cloud]# ansible-vault encrypt_string AKIAZDCVQDIX4BHPABXJ
+New Vault password:
+Confirm New Vault password:
+!vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          33656538353531366139383039316161633932353439363165613562333838303263356532663861
+          3765666235663232366331613563653365303261666139360a386639643639353466346163393935
+          66613539616663623732316433353637376135333133336634356634393130613861313762663261
+          6431346563383662640a316536343134646536623032376466633434356465333166623837653532
+          65303536346338313139346466656262333031636561656632326362613666653965
+Encryption successful
+[root@ip-172-31-17-140 cloud]# ansible-vault encrypt_string rbPoJbZf4r9vTgDJuFjYF41aTsA74QBHQhkgQMF6
+New Vault password:
+Confirm New Vault password:
+!vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          34656338393436326331616265356661353462336330323234623335303765326365393634623932
+          6434396263323830343964336166343165633030633837360a356164636264386263316232336136
+          63356231326433316238376539626336643839313166666261346539323730323964343763653661
+          6662633864356534360a303139636230643633326136623364613062613431373630356535343930
+          38323133383033653262396637636636613264353235386262626133333032653833663531653738
+          6130623061316564613566333636313733343337393561326236
+Encryption successful
+
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars:
+    key: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          33626532613562393665653532343262666630333064643034326465613031306634636632373337
+          6665396331663561333033336637633534656336326339350a633532333735646439663966386238
+          34306631343031646462363933343330333032623237643661316132353337613562393764646637
+          3639393434343139300a643634633938376561363931643963633832303534386531323737323334
+          31616534356563393162636439303339383434616364636366313865363730613365
+    secret: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          32323537323461343465646635386634623337316430353764323638626138326138646663653866
+          6233346666626431393166306230613965326136373631630a663330393139303638303165663338
+          36313566306561636163366134633931363439366566656637323932633433356632353139316632
+          3664646535653337380a313939326433343739623331383939336263386339613536356335313735
+          61363538343765663261316337663831663431636530363337306566356632663636366631336138
+          3239386235653639393538393262333934376134326635343736
+
+  tasks:
+  - ec2:
+      key_name: rajesh-mumbai
+      instance_type: t2.small
+      image: ami-5b673c34
+      aws_access_key: "{{ key }}"
+      aws_secret_key: "{{ secret }}"
+      instance_tags:
+        Name: DEMO
+      vpc_subnet_id: subnet-8c19b3e5
+      region: ap-south-1
+
+--ask-vault-pass
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars_files:
+    - vars.yaml
+
+  tasks:
+  - ec2:
+      key_name: rajesh-mumbai
+      instance_type: t2.small
+      image: ami-5b673c34
+      aws_access_key: "{{ key }}"
+      aws_secret_key: "{{ secret }}"
+      instance_tags:
+        Name: DEMO
+      vpc_subnet_id: subnet-8c19b3e5
+      region: ap-south-1
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars_files:
+    - vars.yaml
+
+  tasks:
+
+  - debug:
+      msg: My Name is Rajesh
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+  vars_files:
+    - vars.yaml
+
+  tasks:
+  - ec2:
+      key_name: rajesh-mumbai
+      instance_type: t2.small
+      image: ami-5b673c34
+      aws_access_key: "{{ key }}"
+      aws_secret_key: "{{ secret }}"
+      instance_tags:
+        Name: DEMO
+      vpc_subnet_id: subnet-8c19b3e5
+      region: ap-south-1
+
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+
+  tasks:
+  - ec2:
+      key_name: rajesh-mumbai
+      instance_type: t2.small
+      image: ami-5b673c34
+      instance_tags:
+        Name: DEMO
+      vpc_subnet_id: subnet-8c19b3e5
+      region: ap-south-1
+
+
+
+
+export EC2_INI_PATH=/root/Ansible-astrazeneca-June-2020/rajesh/cloud/ec2.ini
+export EC2_INSTANCE_FILTERS='tag:Name=RAJESH-ACS'
+
+
+======================================================
+	DYNAMIC Inventory
+Name RAJESH-ACS
+
+ export EC2_INSTANCE_FILTERS='tag:Name=RAJESH-ACS'
+
+
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: all
+  vars_files:
+    - vars.yaml
+
+  tasks:
+
+  - debug:
+      msg: My Name is Rajesh
+
+   export AWS_ACCESS_KEY_ID='AK123'
+    export AWS_SECRET_ACCESS_KEY='abc123'
+
+=============================
+Ansible Module			DONE
+Ansible Error Handling		DONE
+Ansible Plugins
+https://www.devopsschool.com/blog/what-is-ansible-plugins-and-how-to-extend-ansible-through-plugins/
+https://www.devopsschool.com/blog/deep-dive-into-lookup-plugins-in-ansible-with-example/
+
+
+	- lookups
+https://www.devopsschool.com/blog/deep-dive-into-lookup-plugins-in-ansible-with-example/
+
+
+		- jinja2
+https://www.devopsschool.com/blog/deep-dive-into-jinja2-ansible-template-with-example/
+
+Ansible with Docker
+
+CI with Ansible
+
+
+
+
+
+---
+- name: This sets up an httpd webserver
+  hosts: localhost
+
+  tasks:
+
+  - debug:
+      msg: My Name is Rajesh
+  - test_module:
+      appkey: 
+      treshold: 2
+  - test_module:
+      appkey: fe8f2030bd325e2f9c85a96ab20aaa9f
+      treshold: 6
+
+
+
+============================================
+---
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  tasks:
+  - name: touch without state
+    touch:
+      file: ./me.txt
+    register: touch_out
+  - debug:
+      var: touch_out
+  - name: touchw with state (after create)
+    touch:
+       file: ./me.txt
+       state: present
+  - name: touch with absent
+    touch:
+       file: ./me.txt
+       state: absent
+  - name: touch absent with no file
+    touch:
+      file: ./me.txt
+      state: absent
+
+
+#touch.bash
+
+#!/bin/bash
+# import variables from ansible
+source $1
+state=${state:-present}
+if [[ $state == "present" ]]; then
+	if [ ! -e $file ]; then
+		touch $file
+		echo { \"changed\": true }
+		exit 0
+	else
+		echo { \"changed\": false }
+		exit 0
+	fi
+fi
+
+if [[ $state == "absent" ]]; then
+	if [ -e $file ]; then
+		rm $file
+		echo { \"changed\": true }
+		exit 0
+	else
+		echo { \"changed\": false}
+		exit 0
+	fi
+fi
+
+===================================================
+Ansible Error Handling
+===================================================
+
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_error_handling.html
+
+- name: Fail task when the command error output prints FAILED
+  command: /usr/bin/example-command -x -y -z
+  register: command_result
+  failed_when: "'FAILED' in command_result.stderr"
+
+
+- name: this command prints FAILED when it fails
+  command: /usr/bin/example-command -x -y -z
+  register: command_result
+  ignore_errors: True
+
+- hosts: somehosts
+  any_errors_fatal: true
+  roles:
+    - myrole
+
+- hosts: somehosts
+  tasks:
+    - block:
+        - include_tasks: mytasks.yml
+      any_errors_fatal: true
+
+
+try 
+{
+
+}
+expect
+
+
+ tasks:
+   - name: Install, configure, and start Apache
+     block:
+       - name: install httpd and memcached
+         yum:
+           name:
+           - httpd
+           - memcached
+           state: present
+
+       - name: apply the foo config template
+         template:
+           src: templates/src.j2
+           dest: /etc/foo.conf
+       - name: start service bar and enable it
+         service:
+           name: bar
+           state: started
+           enabled: True
+     when: ansible_facts['distribution'] == 'CentOS'
+     become: true
+     become_user: root
+     ignore_errors: yes
+
+
+ tasks:
+ - name: Handle the error
+   block:
+     - debug:
+         msg: 'I execute normally'
+     - name: i force a failure
+       command: /bin/false
+     - debug:
+         msg: 'I never execute, due to the above task failing, :-('
+   rescue:
+     - debug:
+         msg: 'I caught an error, can do stuff here to fix it, :-)'
+
+
+ - name: Always do X
+   block:
+     - debug:
+         msg: 'I execute normally'
+     - name: i force a failure
+       command: /bin/false
+     - debug:
+         msg: 'I never execute :-('
+   always:
+     - debug:
+         msg: "This always executes, :-)"
+
+====================================
+
+---
+- hosts: localhost
+  gather_facts: False
+  tasks:
+  - debug: msg="{{ lookup('env','HOME') }} is an environment variable"
+  - name:  Match 'Li' on the first column, return the second column (0 based index)
+    debug: msg="The atomic number of Lithium is {{ lookup('csvfile', 'Li file=elements.csv delimiter=,') }}"
+
+
+
+elements.csv
+
+key,value
+Li,rajesh
+================================
+
+
+---
+- hosts: localhost
+  gather_facts: False
+  tasks:
+  - name: Creating my.cnf with respected resources
+    debug: 
+      msg: "Common Rounding of a number {{ 27|root(3) }}" #40
+
+
+---
+- hosts: localhost
+  gather_facts: False
+  tasks:
+  - name: Creating my.cnf with respected resources
+    debug: 
+      msg: "Common Rounding of a number {{ 39.4 | round }}" #40
+
+---
+- hosts: localhost
+  gather_facts: False
+  tasks:
+  - name: Creating my.cnf with respected resources
+    template:
+      src: index.j2
+      dest: index.html
+
+
+
+<!DOCTYPE html>
+<html>
+<p>Hello {{ 39.4 | round }} </p>
+</body>
+</html>
+=====================================================
+Ansible Connection Types
+		localhost
+		ssh
+		winrm
+		docker
+Arch of docker
+---------------------
+Human -> Docker Client --> Docker Deamon
+         --------------------------------
+
+Step 1 
+	Docker Deamon - -h ip:port
+sudo dockerd -H unix:///var/run/docker.sock -H -H tcp://10.10.10.2:2375
+
+
+Step 2 
+
+- name: create jenkins container
+  docker_container:
+    docker_host: 10.10.10.2:2375
+    name: my_jenkins
+    image: jenkins
+
+		
+
+
+
+13.233.83.68
+===========================================================
+===========================================================
+Notes - https://github.com/devopsschool-training-notes/Ansible-astrazeneca-June-2020
+
+Slides - 
+	- http://devopsschool.com/slides
+	- https://www.devopsschool.com/pdf/
+
+Tutorials
+	 - https://www.devopsschool.com/tutorial
+         - https://www.devopsschool.com/blog/
+
+Videos
+ 	= https://www.devopsschool.com/videos
+	- https://www.devopsschool.com/video/
+
+Community 
+	https://www.devopsschool.com/community/
+	Stackoverflow.com
+
+How to contact me?
+		DevOps@Rajeshkumar.xyz
+		
+		Q1 - IMM.
+		Q2 - Weekends
+
+Feedback Link:
+https://tinyurl.com/yc5nuyz7
+Please click the above link and give your valuable feedback for today’s session at the end.
+Regards-Asheesh-Springpeople
+	
+
+www.RajeshKumar.xyz
+======================
+
+
+
+
+
+
+
+
+
+
+
+
+
